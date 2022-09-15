@@ -1,3 +1,4 @@
 debug/
+*.postcard
 target/
 Cargo.lock

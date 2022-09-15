@@ -1,0 +1,20 @@
+[package]
+name = "icu-perf-test-datetime"
+version = "0.1.0"
+edition = "2021"
+links = "icuuc"
+
+[dependencies]
+intl-harness = { path = "../../../harness" }
+icu_datetime = { path = "../../../../icu4x/components/datetime", features = ["serde"] }
+icu_locid = { path = "../../../../icu4x/components/locid" }
+icu_provider_blob = { path = "../../../../icu4x/provider/blob" }
+libc = "0.2"
+
+[dev-dependencies]
+
+criterion = "0.3"
+
+[[bench]]
+name = "datetime"
+harness = false
