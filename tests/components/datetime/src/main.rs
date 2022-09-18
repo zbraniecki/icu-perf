@@ -15,14 +15,14 @@ extern "C" {
     pub fn udat_open_72(
         timeStyle: *const libc::c_int,
         dateStyle: *const libc::c_int,
-        locale: *const libc::c_char,
+        locale: *const c_char,
         tzID: *const libc::c_int,
         tzIDLength: libc::c_int,
         pattern: *const libc::c_char,
         patternLength: libc::c_int,
         status: *mut libc::c_int,
-    ) -> libc::c_int;
-    pub fn udat_close_72(format: *const libc::c_int);
+    ) -> libc::c_void;
+    pub fn udat_close_72(format: *const libc::c_void);
     //
     // U_CAPI int32_t U_EXPORT2
     // udat_format(    const    UDateFormat*    format,
@@ -32,11 +32,11 @@ extern "C" {
     //         UFieldPosition* position,
     //         UErrorCode*     status)
     pub fn udat_format_72(
-        format: *const libc::c_int,
-        dateToFormat: *const libc::c_int,
-        result: *mut libc::c_char,
-        resultLength: *mut libc::c_int,
-        position: *const libc::c_int,
+        format: *const libc::c_void,
+        dateToFormat: libc::c_float,
+        result: *mut c_char,
+        resultLength: *mut i32,
+        position: *const i32,
         status: *mut libc::c_int,
     ) -> libc::c_int;
 }
@@ -72,26 +72,27 @@ fn main() {
     let result = CString::default();
     let ptr = result.into_raw();
     let mut result_length = 0;
+    let date_to_format = 100000000.0;
 
-    unsafe {
-        let date_to_format = 0;
-        let position = 0;
+    let result_length2 = unsafe {
         udat_format_72(
             &dtf,
-            &date_to_format,
+            date_to_format,
             ptr,
             &mut result_length,
-            &position,
+            std::ptr::null(),
             &mut status,
-        );
-    }
+        )
+    };
+    println!("FOO");
 
-    unsafe {
-        udat_close_72(&dtf);
-    }
+    // unsafe {
+    //     udat_close_72(&dtf);
+    // }
 
-    let result = unsafe { CString::from_raw(ptr) }.into_string().unwrap();
-    println!("{}", result);
+    // let result = unsafe { CString::from_raw(ptr) }.into_string().unwrap();
+    println!("{:?}", result_length2);
+    // println!("{}", result);
     // let provider =
     //     StaticDataProvider::try_new_from_static_blob(&ICU4X_DATA).expect("Failed to load data");
     // let langid = langid!("en");
