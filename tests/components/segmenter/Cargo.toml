@@ -1,0 +1,20 @@
+[package]
+name = "icu-perf-test-segmenter"
+version = "0.1.0"
+edition = "2021"
+links = "icui18n"
+
+[dependencies]
+intl-harness = { path = "../../../harness" }
+icu_segmenter = { path = "../../../../icu4x/experimental/segmenter", features = ["serde"] }
+icu_locid = { path = "../../../../icu4x/components/locid" }
+icu_provider_blob = { path = "../../../../icu4x/provider/blob" }
+libc = "0.2"
+
+[dev-dependencies]
+
+criterion = "0.3"
+
+[[bench]]
+name = "segmenter"
+harness = false

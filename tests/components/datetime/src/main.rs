@@ -21,7 +21,7 @@ extern "C" {
         pattern: *const libc::c_char,
         patternLength: libc::c_int,
         status: *mut libc::c_int,
-    ) -> libc::c_void;
+    ) -> *const libc::c_void;
     pub fn udat_close_72(format: *const libc::c_void);
     //
     // U_CAPI int32_t U_EXPORT2
@@ -35,7 +35,7 @@ extern "C" {
         format: *const libc::c_void,
         dateToFormat: libc::c_float,
         result: *mut c_char,
-        resultLength: *mut i32,
+        resultLength: libc::c_int,
         position: *const i32,
         status: *mut libc::c_int,
     ) -> libc::c_int;
@@ -48,38 +48,34 @@ extern "C" {
 // const ICU4X_DATA: &[u8] = include_bytes!(concat!("../../../../data/icu4x-1.0.postcard"));
 
 fn main() {
-    let date_style = 0;
-    let time_style = 0;
+    let date_style = 2;
+    let time_style = 2;
     let locale = CString::new("en-US").unwrap();
-    let tz_id = 0;
-    let tz_id_length = 0;
-    let pattern = 0;
-    let pattern_length = 0;
     let mut status = 0;
     let dtf = unsafe {
         udat_open_72(
             &date_style,
             &time_style,
             locale.as_ptr(),
-            &tz_id,
-            tz_id_length,
-            &pattern,
-            pattern_length,
+            std::ptr::null(),
+            -1,
+            std::ptr::null(),
+            -1,
             &mut status,
         )
     };
 
     let result = CString::default();
     let ptr = result.into_raw();
-    let mut result_length = 0;
+    let result_length = 30;
     let date_to_format = 100000000.0;
 
-    let result_length2 = unsafe {
+    unsafe {
         udat_format_72(
-            &dtf,
+            dtf,
             date_to_format,
             ptr,
-            &mut result_length,
+            result_length,
             std::ptr::null(),
             &mut status,
         )
@@ -87,11 +83,11 @@ fn main() {
     println!("FOO");
 
     // unsafe {
-    //     udat_close_72(&dtf);
+    //     udat_close_72(dtf);
     // }
 
     // let result = unsafe { CString::from_raw(ptr) }.into_string().unwrap();
-    println!("{:?}", result_length2);
+    // println!("{:?}", result_length2);
     // println!("{}", result);
     // let provider =
     //     StaticDataProvider::try_new_from_static_blob(&ICU4X_DATA).expect("Failed to load data");
