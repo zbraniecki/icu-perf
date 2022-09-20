@@ -30,9 +30,9 @@ pub struct DateTimeFormatter {
 
 impl DateTimeFormatter {
     pub fn new() -> Self {
-        let date_style = 2;
-        let time_style = 2;
-        let locale = CString::new("en-US").unwrap();
+        let date_style = 2; // UDAT_MEDIUM
+        let time_style = 2; // UDAT_MEDIUM
+        let locale = CString::new("en").unwrap();
 
         let mut status = 0;
         let ptr = unsafe {
@@ -53,7 +53,7 @@ impl DateTimeFormatter {
     pub fn format(&self) -> String {
         let mut status = 0;
         let mut storage = vec![0u16; 255]; // May need +1? Not sure if icu null-terminates
-        let date_to_format = 1670000000000.0;
+        let date_to_format = 27832853.0*60.0*1000.0; // ms global unix epoch
 
         let new_capacity = unsafe {
             udat_format_72(
