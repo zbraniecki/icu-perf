@@ -6,14 +6,20 @@ links = "icui18n"
 
 [dependencies]
 intl-harness = { path = "../../../harness" }
-icu_datetime = { path = "../../../../icu4x/components/datetime", features = ["serde"] }
-icu_locid = { path = "../../../../icu4x/components/locid" }
-icu_provider_blob = { path = "../../../../icu4x/provider/blob" }
-libc = "0.2"
+icu_datetime = { path = "../../../../icu4x/components/datetime", features = ["serde"], optional = true }
+icu_locid = { path = "../../../../icu4x/components/locid", optional = true }
+icu_calendar = { path = "../../../../icu4x/components/calendar", optional = true }
+icu_provider_blob = { path = "../../../../icu4x/provider/blob", optional = true }
+libc = { version = "0.2", optional = true }
 
 [dev-dependencies]
-
 criterion = "0.3"
+
+[features]
+icu4x = ["icu_datetime", "icu_calendar", "icu_locid", "icu_provider_blob"]
+icu4c = ["libc"]
+icu4cpp = []
+rust_icu = []
 
 [[bench]]
 name = "datetime"
