@@ -21,7 +21,9 @@ litemap = { path = "../../../../icu4x/utils/litemap", optional = true }
 criterion = "0.3"
 
 [features]
-icu4x = ["icu_datetime", "icu_calendar", "icu_provider", "icu", "icu_locid", "icu_provider_blob", "zerovec", "litemap", "icu_provider_adapters"]
+icu4x = ["icu_datetime", "icu_calendar", "icu_locid"]
+icu4x-static = ["icu4x", "icu_provider_blob"]
+icu4x-baked = ["icu4x", "icu_provider_adapters", "litemap", "zerovec", "icu", "icu_provider"]
 icu4c = ["libc"]
 icu4cpp = []
 rust_icu = []

@@ -14,12 +14,20 @@ fn main() {
 
     #[cfg(feature = "icu4x")]
     {
-        let provider = icu4x::DateTimeFormatter::get_static_provider();
-        let dtf = icu4x::DateTimeFormatter::new_static(&provider);
+        #[cfg(feature = "icu4x-static")]
+        {
+            let provider = icu4x::DateTimeFormatter::get_static_provider();
+            let dtf = icu4x::DateTimeFormatter::new_static(&provider);
+            let result = dtf.format();
+            println!("ICU4X (static): {}", result);
+        }
 
-        // let provider = icu4x::DateTimeFormatter::get_baked_provider();
-        // let dtf = icu4x::DateTimeFormatter::new_baked(&provider);
-        let result = dtf.format();
-        println!("ICU4X: {}", result);
+        #[cfg(feature = "icu4x-baked")]
+        {
+            let provider = icu4x::DateTimeFormatter::get_baked_provider();
+            let dtf = icu4x::DateTimeFormatter::new_baked(&provider);
+            let result = dtf.format();
+            println!("ICU4X (baked): {}", result);
+        }
     }
 }
