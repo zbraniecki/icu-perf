@@ -10,13 +10,18 @@ icu_datetime = { path = "../../../../icu4x/components/datetime", features = ["se
 icu_locid = { path = "../../../../icu4x/components/locid", optional = true }
 icu_calendar = { path = "../../../../icu4x/components/calendar", optional = true }
 icu_provider_blob = { path = "../../../../icu4x/provider/blob", optional = true }
+icu_provider = { path = "../../../../icu4x/provider/core", optional = true }
+icu_provider_adapters = { path = "../../../../icu4x/provider/adapters", optional = true }
+icu = { path = "../../../../icu4x/components/icu", optional = true }
 libc = { version = "0.2", optional = true }
+zerovec = { path = "../../../../icu4x/utils/zerovec", optional = true }
+litemap = { path = "../../../../icu4x/utils/litemap", optional = true }
 
 [dev-dependencies]
 criterion = "0.3"
 
 [features]
-icu4x = ["icu_datetime", "icu_calendar", "icu_locid", "icu_provider_blob"]
+icu4x = ["icu_datetime", "icu_calendar", "icu_provider", "icu", "icu_locid", "icu_provider_blob", "zerovec", "litemap", "icu_provider_adapters"]
 icu4c = ["libc"]
 icu4cpp = []
 rust_icu = []

@@ -1,3 +1,5 @@
+extern crate alloc;
+
 #[cfg(feature = "icu4c")]
 pub mod icu4c;
 

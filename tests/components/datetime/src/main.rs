@@ -1,8 +1,8 @@
 #[cfg(feature = "icu4c")]
-pub mod icu4c;
+use icu_perf_test_datetime::icu4c;
 
 #[cfg(feature = "icu4x")]
-pub mod icu4x;
+use icu_perf_test_datetime::icu4x;
 
 fn main() {
     #[cfg(feature = "icu4c")]
@@ -14,11 +14,11 @@ fn main() {
 
     #[cfg(feature = "icu4x")]
     {
-        const ICU4X_DATA: &[u8] = include_bytes!(concat!("../../../../data/icu4x-1.0.postcard"));
-        use icu_provider_blob::StaticDataProvider;
-        let provider =
-            StaticDataProvider::try_new_from_static_blob(&ICU4X_DATA).expect("Failed to load data");
-        let dtf = icu4x::DateTimeFormatter::new(&provider);
+        let provider = icu4x::DateTimeFormatter::get_static_provider();
+        let dtf = icu4x::DateTimeFormatter::new_static(&provider);
+
+        // let provider = icu4x::DateTimeFormatter::get_baked_provider();
+        // let dtf = icu4x::DateTimeFormatter::new_baked(&provider);
         let result = dtf.format();
         println!("ICU4X: {}", result);
     }

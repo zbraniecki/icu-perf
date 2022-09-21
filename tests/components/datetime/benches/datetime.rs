@@ -3,10 +3,10 @@ use criterion::criterion_group;
 use criterion::criterion_main;
 use criterion::Criterion;
 
-#[cfg(feature = "icu4x")]
-use icu_perf_test_datetime::icu4x;
 #[cfg(feature = "icu4c")]
 use icu_perf_test_datetime::icu4c;
+#[cfg(feature = "icu4x")]
+use icu_perf_test_datetime::icu4x;
 
 fn datetime(c: &mut Criterion) {
     // let data_set = get_test_set("../../../harness/data");
@@ -14,13 +14,13 @@ fn datetime(c: &mut Criterion) {
 
     #[cfg(feature = "icu4x")]
     {
-        const ICU4X_DATA: &[u8] = include_bytes!(concat!("../../../../data/icu4x-1.0.postcard"));
-        use icu_provider_blob::StaticDataProvider;
-        let provider =
-            StaticDataProvider::try_new_from_static_blob(&ICU4X_DATA).expect("Failed to load data");
         c.bench_function("icu4x/components/datetime/datetime/format", |b| {
             b.iter(|| {
-                let dtf = icu4x::DateTimeFormatter::new(&provider);
+                // let provider =
+                //     icu4x::DateTimeFormatter::get_static_provider();
+                // let dtf = icu4x::DateTimeFormatter::new_static(&provider);
+                let provider = icu4x::DateTimeFormatter::get_baked_provider();
+                let dtf = icu4x::DateTimeFormatter::new_baked(&provider);
                 dtf.format();
             })
         });
