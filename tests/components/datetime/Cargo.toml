@@ -19,6 +19,9 @@ litemap = { path = "../../../../icu4x/utils/litemap", optional = true }
 
 [dev-dependencies]
 criterion = "0.3"
+icu_locid = { path = "../../../../icu4x/components/locid" }
+serde = "1"
+serde_json = "1"
 
 [features]
 icu4x = ["icu_datetime", "icu_calendar", "icu_locid"]
