@@ -17,10 +17,12 @@ fn main() {
     {
         let now = Instant::now();
         for test in tests.0.iter() {
-            let dtf = icu4c::DateTimeFormatter::new(&test.langid[0]);
-            for case in test.values.iter() {
-                let result = dtf.format(case.input);
-                // erintln!("{}", result);
+            for lid in test.langid.iter() {
+                let dtf = icu4c::DateTimeFormatter::new(lid);
+                for case in test.values.iter() {
+                    let result = dtf.format(case.input);
+                    // erintln!("{}", result);
+                }
             }
         }
         let measured_us = now.elapsed().as_micros();

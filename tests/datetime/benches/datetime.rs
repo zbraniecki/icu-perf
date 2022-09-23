@@ -25,10 +25,12 @@ fn datetime(c: &mut Criterion) {
             b.iter(|| {
                 let provider = icu4x::DateTimeFormatter::get_static_provider();
                 for test in tests.0.iter() {
-                    let langid: LanguageIdentifier = test.langid[0].parse().unwrap();
-                    let dtf = icu4x::DateTimeFormatter::new_static(&provider, &langid);
-                    for case in test.values.iter() {
-                        let _ = dtf.format(black_box(case.input));
+                    for lid in test.langid.iter() {
+                        let langid: LanguageIdentifier = lid.parse().unwrap();
+                        let dtf = icu4x::DateTimeFormatter::new_static(&provider, &langid);
+                        for case in test.values.iter() {
+                            let _ = dtf.format(black_box(case.input));
+                        }
                     }
                 }
             })
@@ -43,10 +45,12 @@ fn datetime(c: &mut Criterion) {
             b.iter(|| {
                 let provider = icu4x::DateTimeFormatter::get_baked_provider();
                 for test in tests.0.iter() {
-                    let langid: LanguageIdentifier = test.langid[0].parse().unwrap();
-                    let dtf = icu4x::DateTimeFormatter::new_baked(&provider, &langid);
-                    for case in test.values.iter() {
-                        let _ = dtf.format(black_box(case.input));
+                    for lid in test.langid.iter() {
+                        let langid: LanguageIdentifier = lid.parse().unwrap();
+                        let dtf = icu4x::DateTimeFormatter::new_baked(&provider, &langid);
+                        for case in test.values.iter() {
+                            let _ = dtf.format(black_box(case.input));
+                        }
                     }
                 }
             })
@@ -58,9 +62,11 @@ fn datetime(c: &mut Criterion) {
         c.bench_function("icu4c/common/datetime/datetime/overview", |b| {
             b.iter(|| {
                 for test in tests.0.iter() {
-                    let dtf = icu4c::DateTimeFormatter::new(&test.langid[0]);
-                    for case in test.values.iter() {
-                        let _ = dtf.format(black_box(case.input));
+                    for lid in test.langid.iter() {
+                        let dtf = icu4c::DateTimeFormatter::new(lid);
+                        for case in test.values.iter() {
+                            let _ = dtf.format(black_box(case.input));
+                        }
                     }
                 }
             })

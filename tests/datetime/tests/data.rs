@@ -16,11 +16,13 @@ fn test_data() {
 
         let provider = icu4x::DateTimeFormatter::get_baked_provider();
         for test in tests.0.iter() {
-            let langid: LanguageIdentifier = test.langid[0].parse().unwrap();
-            let dtf = icu4x::DateTimeFormatter::new_baked(&provider, &langid);
-            for case in test.values.iter() {
-                let result = dtf.format(case.input);
-                assert_eq!(result, case.output);
+            for lid in test.langid.iter() {
+                let langid: LanguageIdentifier = lid.parse().unwrap();
+                let dtf = icu4x::DateTimeFormatter::new_baked(&provider, &langid);
+                for case in test.values.iter() {
+                    let result = dtf.format(case.input);
+                    assert_eq!(result, case.output);
+                }
             }
         }
     }
