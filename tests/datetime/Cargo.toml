@@ -5,24 +5,28 @@ edition = "2021"
 links = "icui18n"
 
 [dependencies]
-intl-harness = { path = "../../../harness" }
-icu_datetime = { path = "../../../../icu4x/components/datetime", features = ["serde"], optional = true }
-icu_locid = { path = "../../../../icu4x/components/locid", optional = true }
-icu_calendar = { path = "../../../../icu4x/components/calendar", optional = true }
-icu_provider_blob = { path = "../../../../icu4x/provider/blob", optional = true }
-icu_provider = { path = "../../../../icu4x/provider/core", optional = true }
-icu_provider_adapters = { path = "../../../../icu4x/provider/adapters", optional = true }
-icu = { path = "../../../../icu4x/components/icu", optional = true }
+icu_datetime = { path = "../../../icu4x/components/datetime", features = ["serde"], optional = true }
+icu_locid = { path = "../../../icu4x/components/locid", optional = true }
+icu_calendar = { path = "../../../icu4x/components/calendar", optional = true }
+icu_provider_blob = { path = "../../../icu4x/provider/blob", optional = true }
+icu_provider = { path = "../../../icu4x/provider/core", optional = true }
+icu_provider_adapters = { path = "../../../icu4x/provider/adapters", optional = true }
+icu = { path = "../../../icu4x/components/icu", optional = true }
 libc = { version = "0.2", optional = true }
-zerovec = { path = "../../../../icu4x/utils/zerovec", optional = true }
-litemap = { path = "../../../../icu4x/utils/litemap", optional = true }
+zerovec = { path = "../../../icu4x/utils/zerovec", optional = true }
+litemap = { path = "../../../icu4x/utils/litemap", optional = true }
 # rust_icu_udat = { version = "2.0.3", optional = true }
 # rust_icu_uloc = { version = "2.0.3", optional = true }
 # rust_icu_sys = { version = "2.0.3", optional = true }
 
+[profile.release]
+panic = "abort"
+lto = true
+opt-level = "s"
+
 [dev-dependencies]
 criterion = "0.3"
-icu_locid = { path = "../../../../icu4x/components/locid" }
+icu_locid = { path = "../../../icu4x/components/locid" }
 serde = "1"
 serde_json = "1"
 

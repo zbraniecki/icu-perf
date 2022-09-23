@@ -7,7 +7,7 @@ PKG := `pkg-config --libs --cflags jsoncpp` -I$(ICU_PATH)/i18n -I$(ICU_PATH)/com
 all: datetime
 
 datetime: datetime.cpp
-	$(CXX) -std=c++20 -O3 -o datetime datetime.cpp $(PKG)
+	$(CXX) -std=c++20 -O3 -o datetime datetime.cpp $(ICU_PATH)/lib/libicui18n.a $(PKG)
 
 clean:
 	rm -f  datetime
