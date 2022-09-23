@@ -1,0 +1,3 @@
+[target.aarch64-apple-darwin.icuuc]
+rustc-link-search = ["native=/Users/zibi/projects/icu/icu4c/source/lib"]
+rustc-link-lib = ["dylib=icui18n"]
