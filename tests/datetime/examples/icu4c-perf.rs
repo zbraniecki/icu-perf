@@ -17,7 +17,7 @@ fn main() {
     {
         let now = Instant::now();
         for test in tests.0.iter() {
-            let dtf = icu4c::DateTimeFormatter::new(&test.langid);
+            let dtf = icu4c::DateTimeFormatter::new(&test.langid[0]);
             for case in test.values.iter() {
                 let result = dtf.format(case.input);
                 // erintln!("{}", result);
