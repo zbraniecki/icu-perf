@@ -21,7 +21,7 @@ fn datetime(c: &mut Criterion) {
     {
         use icu_locid::LanguageIdentifier;
 
-        c.bench_function("icu4x/static/components/datetime/datetime/format", |b| {
+        c.bench_function("icu4x/static/datetime/datetime/format", |b| {
             b.iter(|| {
                 let provider = icu4x::DateTimeFormatter::get_static_provider();
                 for test in &tests.0 {
@@ -39,7 +39,7 @@ fn datetime(c: &mut Criterion) {
     {
         use icu_locid::LanguageIdentifier;
 
-        c.bench_function("icu4x/baked/components/datetime/datetime/format", |b| {
+        c.bench_function("icu4x/baked/datetime/datetime/format", |b| {
             b.iter(|| {
                 let provider = icu4x::DateTimeFormatter::get_baked_provider();
                 for test in &tests.0 {
@@ -55,7 +55,7 @@ fn datetime(c: &mut Criterion) {
 
     #[cfg(feature = "icu4c")]
     {
-        c.bench_function("icu4c/components/datetime/datetime/format", |b| {
+        c.bench_function("icu4c/common/datetime/datetime/format", |b| {
             b.iter(|| {
                 for test in &tests.0 {
                     let dtf = icu4c::DateTimeFormatter::new(&test.langid);

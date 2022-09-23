@@ -37,21 +37,21 @@ fn main() {
         }
     }
 
-    #[cfg(feature = "rust_icu")]
-    {
-        use rust_icu_udat::UDateFormat;
-        use rust_icu_sys::UDateFormatStyle;
-        use rust_icu_uloc::ULoc;
-
-        let loc = ULoc::for_language_tag("en");
-        let dtf = UDateFormat::new_with_style(
-            UDateFormatStyle::UDAT_MEDIUM,
-            UDateFormatStyle::UDAT_MEDIUM,
-            loc,
-            "".try_into().unwrap(),
-        );
-        let dtf = icu4c::DateTimeFormatter::new(langid);
-        let result = dtf.format(epoch);
-        println!("ICU4C: {}", result);
-    }
+    // #[cfg(feature = "rust_icu")]
+    // {
+    //     use rust_icu_udat::UDateFormat;
+    //     use rust_icu_sys::UDateFormatStyle;
+    //     use rust_icu_uloc::ULoc;
+    //
+    //     let loc = ULoc::for_language_tag("en");
+    //     let dtf = UDateFormat::new_with_style(
+    //         UDateFormatStyle::UDAT_MEDIUM,
+    //         UDateFormatStyle::UDAT_MEDIUM,
+    //         loc,
+    //         "".try_into().unwrap(),
+    //     );
+    //     let dtf = icu4c::DateTimeFormatter::new(langid);
+    //     let result = dtf.format(epoch);
+    //     println!("ICU4C: {}", result);
+    // }
 }
