@@ -4,7 +4,7 @@ use criterion::criterion_main;
 use criterion::Criterion;
 
 mod data {
-    include!(concat!(env!("CARGO_MANIFEST_DIR"), "/data/datetime.rs"));
+    include!(concat!(env!("CARGO_MANIFEST_DIR"), "/data/structs.rs"));
 }
 
 #[cfg(feature = "icu4c")]
@@ -21,14 +21,14 @@ fn datetime(c: &mut Criterion) {
     {
         use icu_locid::LanguageIdentifier;
 
-        c.bench_function("icu4x/static/datetime/datetime/format", |b| {
+        c.bench_function("icu4x/static/datetime/datetime/overview", |b| {
             b.iter(|| {
                 let provider = icu4x::DateTimeFormatter::get_static_provider();
-                for test in &tests.0 {
+                for test in tests.0.iter() {
                     let langid: LanguageIdentifier = test.langid.parse().unwrap();
                     let dtf = icu4x::DateTimeFormatter::new_static(&provider, &langid);
-                    for case in &test.values {
-                        let _ = dtf.format(case.input);
+                    for case in test.values.iter() {
+                        let _ = dtf.format(black_box(case.input));
                     }
                 }
             })
@@ -39,14 +39,14 @@ fn datetime(c: &mut Criterion) {
     {
         use icu_locid::LanguageIdentifier;
 
-        c.bench_function("icu4x/baked/datetime/datetime/format", |b| {
+        c.bench_function("icu4x/baked/datetime/datetime/overview", |b| {
             b.iter(|| {
                 let provider = icu4x::DateTimeFormatter::get_baked_provider();
-                for test in &tests.0 {
+                for test in tests.0.iter() {
                     let langid: LanguageIdentifier = test.langid.parse().unwrap();
                     let dtf = icu4x::DateTimeFormatter::new_baked(&provider, &langid);
-                    for case in &test.values {
-                        let _ = dtf.format(case.input);
+                    for case in test.values.iter() {
+                        let _ = dtf.format(black_box(case.input));
                     }
                 }
             })
@@ -55,12 +55,12 @@ fn datetime(c: &mut Criterion) {
 
     #[cfg(feature = "icu4c")]
     {
-        c.bench_function("icu4c/common/datetime/datetime/format", |b| {
+        c.bench_function("icu4c/common/datetime/datetime/overview", |b| {
             b.iter(|| {
-                for test in &tests.0 {
+                for test in tests.0.iter() {
                     let dtf = icu4c::DateTimeFormatter::new(&test.langid);
-                    for case in &test.values {
-                        let _ = dtf.format(case.input);
+                    for case in test.values.iter() {
+                        let _ = dtf.format(black_box(case.input));
                     }
                 }
             })
