@@ -41,4 +41,13 @@ name = "datetime"
 harness = false
 
 [[example]]
-name = "data"
+name = "icu4c"
+required-features = ["icu4c"]
+
+[[example]]
+name = "icu4x-static"
+required-features = ["icu4x-static"]
+
+[[example]]
+name = "icu4x-baked"
+required-features = ["icu4x-baked"]
