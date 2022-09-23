@@ -16,6 +16,9 @@ icu = { path = "../../../../icu4x/components/icu", optional = true }
 libc = { version = "0.2", optional = true }
 zerovec = { path = "../../../../icu4x/utils/zerovec", optional = true }
 litemap = { path = "../../../../icu4x/utils/litemap", optional = true }
+rust_icu_udat = { version = "2.0.3", optional = true }
+rust_icu_uloc = { version = "2.0.3", optional = true }
+rust_icu_sys = { version = "2.0.3", optional = true }
 
 [dev-dependencies]
 criterion = "0.3"
@@ -29,8 +32,11 @@ icu4x-static = ["icu4x", "icu_provider_blob"]
 icu4x-baked = ["icu4x", "icu_provider_adapters", "litemap", "zerovec", "icu", "icu_provider"]
 icu4c = ["libc"]
 icu4cpp = []
-rust_icu = []
+rust_icu = ["rust_icu_udat", "rust_icu_uloc", "rust_icu_sys"]
 
 [[bench]]
 name = "datetime"
 harness = false
+
+[[example]]
+name = "data"
