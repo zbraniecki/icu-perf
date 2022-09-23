@@ -24,10 +24,6 @@ fn test_data() {
             }
         }
     }
-    #[cfg(not(feature = "icu4x-baked"))]
-    {
-        panic!("Enable icu4x-baked feature to run tests");
-    }
 }
 
 #[test]
