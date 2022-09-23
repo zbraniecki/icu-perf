@@ -1,59 +1,39 @@
-use std::ffi::CString;
-use std::os::raw::c_char;
+#[cfg(feature = "icu4c")]
+use icu_perf_test_segmenter::icu4c;
 
-#[link(name = "icui18n")]
-extern "C" {
-    pub fn ubrk_open_72(
-        r#type: *const libc::c_int,
-        text: *const libc::c_char,
-        textLength: libc::c_int,
-        status: *mut libc::c_int,
-    ) -> *const libc::c_void;
-}
+#[cfg(feature = "icu4x")]
+use icu_perf_test_segmenter::icu4x;
 
 fn main() {
-    // let date_style = 0;
-    // let time_style = 0;
-    // let locale = CString::new("en-US").unwrap();
-    // let tz_id = 0;
-    // let tz_id_length = 0;
-    // let pattern = 0;
-    // let pattern_length = 0;
-    // let mut status = 0;
-    // let dtf = unsafe {
-    //     udat_open_72(
-    //         &date_style,
-    //         &time_style,
-    //         locale.as_ptr(),
-    //         &tz_id,
-    //         tz_id_length,
-    //         &pattern,
-    //         pattern_length,
-    //         &mut status,
-    //     )
-    // };
-    //
-    // let result = CString::default();
-    // let ptr = result.into_raw();
-    // let mut result_length = 0;
-    // let date_to_format = 100000000.0;
-    //
-    // let result_length2 = unsafe {
-    //     udat_format_72(
-    //         &dtf,
-    //         date_to_format,
-    //         ptr,
-    //         &mut result_length,
-    //         std::ptr::null(),
-    //         &mut status,
-    //     )
-    // };
-    // println!("FOO");
+    let value = "Hello World";
+    let langid = "en";
 
-    // unsafe {
-    //     udat_close_72(&dtf);
-    // }
+    #[cfg(feature = "icu4c")]
+    {
+        let seg = icu4c::Segmenter::new(langid, value);
+        let result: Vec<_> = seg.collect();
+        println!("ICU4C: {:?}", result);
+    }
 
-    // let result = unsafe { CString::from_raw(ptr) }.into_string().unwrap();
-    // println!("{}", result);
+    #[cfg(feature = "icu4x")]
+    {
+        use icu_locid::LanguageIdentifier;
+
+        let en: LanguageIdentifier = langid.parse().unwrap();
+        #[cfg(feature = "icu4x-static")]
+        {
+            // let provider = icu4x::Segmenter::get_static_provider();
+            let nf = icu4x::WordSegmenter::new_static();
+            let result: Vec<_> = nf.segment(value).collect();
+            println!("ICU4X (static): {:?}", result);
+        }
+
+        #[cfg(feature = "icu4x-baked")]
+        {
+            // let provider = icu4x::NumberFormatter::get_baked_provider();
+            // let nf = icu4x::NumberFormatter::new_baked(&provider, &en);
+            // let result = nf.format(value);
+            // println!("ICU4X (static): {}", result);
+        }
+    }
 }
