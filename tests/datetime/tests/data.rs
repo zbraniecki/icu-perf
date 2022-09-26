@@ -18,8 +18,13 @@ fn test_data() {
         for test in tests.0.iter() {
             for lid in test.langid.iter() {
                 let langid: LanguageIdentifier = lid.parse().unwrap();
-                let dtf = icu4x::DateTimeFormatter::new_baked(&provider, &langid);
                 for case in test.values.iter() {
+                    let dtf = icu4x::DateTimeFormatter::new_baked(
+                        &provider,
+                        &langid,
+                        case.style.0,
+                        case.style.1,
+                    );
                     let result = dtf.format(case.input);
                     assert_eq!(result, case.output);
                 }

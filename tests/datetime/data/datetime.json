@@ -5,27 +5,52 @@
 	    {
 	        "input": 27832853,
 		"style": ["None", "None"],
-		"output": "Dec 2, 2022, 8:53:00 AM"
+		"output": ""
 	    },
 	    {
 	        "input": 15932853,
 		"style": ["None", "Short"],
-		"output": "Apr 17, 2000, 11:33:00 AM"
+		"output": "11:33 AM"
 	    },
 	    {
-	        "input": 15932853,
+	        "input": 18932853,
 		"style": ["None", "Medium"],
-		"output": "Apr 17, 2000, 11:33:00 AM"
+		"output": "7:33:00 PM"
 	    },
 	    {
-	        "input": 15932853,
-		"style": ["None", "Long"],
-		"output": "Apr 17, 2000, 11:33:00 AM"
+	        "input": 18932853,
+		"style": ["Short", "None"],
+		"output": "12/30/05"
 	    },
 	    {
-	        "input": 15932853,
-		"style": ["None", "Full"],
-		"output": "Apr 17, 2000, 11:33:00 AM"
+	        "input": 16282853,
+		"style": ["Medium", "None"],
+		"output": "Dec 16, 2000"
+	    },
+	    {
+	        "input": 19012153,
+		"style": ["Short", "Medium"],
+		"output": "2/23/06, 9:13:00 PM"
+	    },
+	    {
+	        "input": 33102153,
+		"style": ["Medium", "Short"],
+		"output": "Dec 8, 2032, 2:33 PM"
+	    },
+	    {
+	        "input": 39100853,
+		"style": ["Short", "Short"],
+		"output": "5/5/44, 8:53 AM"
+	    },
+	    {
+	        "input": 31923823,
+		"style": ["Medium", "Medium"],
+		"output": "Sep 12, 2030, 7:43:00 AM"
+	    },
+	    {
+	        "input": 27114532,
+		"style": ["Long", "Medium"],
+		"output": "July 21, 2021 at 12:52:00 PM"
 	    }
 	]
     }

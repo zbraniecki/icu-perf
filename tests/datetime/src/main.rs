@@ -23,7 +23,7 @@ fn main() {
         #[cfg(feature = "icu4x-static")]
         {
             let provider = icu4x::DateTimeFormatter::get_static_provider();
-            let dtf = icu4x::DateTimeFormatter::new_static(&provider, &en);
+            let dtf = icu4x::DateTimeFormatter::new_static(&provider, &en, "None", "None");
             let result = dtf.format(epoch);
             println!("ICU4X (static): {}", result);
         }
@@ -31,7 +31,7 @@ fn main() {
         #[cfg(feature = "icu4x-baked")]
         {
             let provider = icu4x::DateTimeFormatter::get_baked_provider();
-            let dtf = icu4x::DateTimeFormatter::new_baked(&provider, &en);
+            let dtf = icu4x::DateTimeFormatter::new_baked(&provider, &en, "None", "None");
             let result = dtf.format(epoch);
             println!("ICU4X (baked): {}", result);
         }

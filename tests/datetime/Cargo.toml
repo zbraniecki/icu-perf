@@ -18,6 +18,9 @@ litemap = { path = "../../../icu4x/utils/litemap", optional = true }
 # rust_icu_udat = { version = "2.0.3", optional = true }
 # rust_icu_uloc = { version = "2.0.3", optional = true }
 # rust_icu_sys = { version = "2.0.3", optional = true }
+serde = { version = "1.0", features = ["derive"], optional = true }
+serde_json = { version = "1", optional = true }
+# codegen = { version = "0.2", optional = true }
 
 [profile.release]
 panic = "abort"
@@ -39,6 +42,7 @@ icu4cpp = []
 rust_icu = [
     #"rust_icu_udat", "rust_icu_uloc", "rust_icu_sys"
 ]
+gen = ["serde", "serde_json"]
 
 [[bench]]
 name = "datetime"
@@ -55,3 +59,11 @@ required-features = ["icu4x-static"]
 [[example]]
 name = "icu4x-baked"
 required-features = ["icu4x-baked"]
+
+[[bin]]
+name = "generate-rs"
+required-features = ["gen"]
+
+[[bin]]
+name = "generate-cpp"
+required-features = ["gen"]

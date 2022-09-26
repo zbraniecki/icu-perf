@@ -23,6 +23,28 @@ const ICU4X_DATA: &[u8] = include_bytes!(concat!(
     "/../../data/icu4x-1.0.postcard"
 ));
 
+fn get_date_length(input: &str) -> Option<length::Date> {
+    match input {
+        "None" => None,
+        "Short" => Some(length::Date::Short),
+        "Medium" => Some(length::Date::Medium),
+        "Long" => Some(length::Date::Long),
+        "Full" => Some(length::Date::Full),
+        _ => unreachable!(),
+    }
+}
+
+fn get_time_length(input: &str) -> Option<length::Time> {
+    match input {
+        "None" => None,
+        "Short" => Some(length::Time::Short),
+        "Medium" => Some(length::Time::Medium),
+        "Long" => Some(length::Time::Long),
+        "Full" => Some(length::Time::Full),
+        _ => unreachable!(),
+    }
+}
+
 pub struct DateTimeFormatter {
     ptr: icu_datetime::DateTimeFormatter,
 }
@@ -39,34 +61,45 @@ impl DateTimeFormatter {
     }
 
     #[cfg(feature = "icu4x-static")]
-    pub fn new_static(provider: &BlobDataProvider, langid: &LanguageIdentifier) -> Self {
-        let options =
-            length::Bag::from_date_time_style(length::Date::Medium, length::Time::Medium).into();
+    pub fn new_static(
+        provider: &BlobDataProvider,
+        langid: &LanguageIdentifier,
+        date_length: &str,
+        time_length: &str,
+    ) -> Self {
+        let mut options = length::Bag::default();
+        options.date = get_date_length(date_length);
+        options.time = get_time_length(time_length);
         let ptr = icu_datetime::DateTimeFormatter::try_new_with_buffer_provider(
             provider,
             &langid.into(),
-            options,
+            options.into(),
         )
         .unwrap();
         Self { ptr }
     }
 
     #[cfg(feature = "icu4x-baked")]
-    pub fn new_baked(provider: &data::BakedDataProvider, langid: &LanguageIdentifier) -> Self {
-        let options =
-            length::Bag::from_date_time_style(length::Date::Medium, length::Time::Medium).into();
+    pub fn new_baked(
+        provider: &data::BakedDataProvider,
+        langid: &LanguageIdentifier,
+        date_length: &str,
+        time_length: &str,
+    ) -> Self {
+        let mut options = length::Bag::default();
+        options.date = get_date_length(date_length);
+        options.time = get_time_length(time_length);
         let ptr = icu_datetime::DateTimeFormatter::try_new_with_any_provider(
             provider,
             &langid.into(),
-            options,
+            options.into(),
         )
         .unwrap();
         Self { ptr }
     }
 
     pub fn format(&self, input: i32) -> String {
-        let datetime = DateTime::from_minutes_since_local_unix_epoch(input)
-            .expect("Failed to construct DateTime.");
+        let datetime = DateTime::from_minutes_since_local_unix_epoch(input);
         let any_datetime = datetime.to_any();
         self.ptr.format_to_string(&any_datetime).unwrap()
     }
