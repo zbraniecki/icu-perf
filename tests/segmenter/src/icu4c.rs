@@ -31,7 +31,7 @@ pub struct Segmenter {
 }
 
 impl Segmenter {
-    pub fn new(langid: &str, input: &str) -> Self {
+    pub fn new(langid: &str, input: &str, word: bool) -> Self {
         let locale = CString::new(langid).unwrap();
         let input: Vec<u16> = input.encode_utf16().collect();
         let inputLen = input.len();
@@ -39,7 +39,7 @@ impl Segmenter {
         let mut status = 0;
         let ptr = unsafe {
             ubrk_open_72(
-                1, // WORD
+                if word { 1 } else { 2 }, // WORD or LINE
                 locale.as_ptr(),
                 input.as_ptr(),
                 inputLen as i32,
@@ -55,7 +55,7 @@ impl Iterator for Segmenter {
 
     fn next(&mut self) -> Option<Self::Item> {
         let idx = unsafe { ubrk_next_72(self.ptr) };
-        if idx > 0 {
+        if idx >= 0 {
             Some(idx)
         } else {
             None
