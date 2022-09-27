@@ -5,13 +5,19 @@ edition = "2021"
 links = "icuuc"
 
 [dependencies]
-intl-harness = { path = "../../../harness" }
-icu_locid = { path = "../../../../icu4x/components/locid" }
-libc = "0.2"
+icu_locid = { path = "../../../icu4x/components/locid", optional = true }
+libc = { version = "0.2", optional = true }
+serde = { version = "1.0", features = ["derive"], optional = true }
+serde_json = { version = "1", optional = true }
 
 [dev-dependencies]
-
 criterion = "0.3"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1"
+
+[features]
+icu4c = ["libc"]
+icu4x = ["icu_locid"]
 
 [[bench]]
 name = "langid"
