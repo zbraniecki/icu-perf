@@ -25,9 +25,34 @@ pub struct LineSegmenter {
 
 impl LineSegmenter {
     #[cfg(feature = "icu4x-static")]
-    pub fn new_static() -> Self {
+    pub fn get_static_provider() -> BlobDataProvider {
+        BlobDataProvider::try_new_from_static_blob(&ICU4X_DATA).expect("Failed to load data")
+    }
+
+    #[cfg(feature = "icu4x-baked")]
+    pub fn get_baked_provider() -> data::BakedDataProvider {
+        data::BakedDataProvider
+    }
+
+    #[cfg(feature = "icu4x-static")]
+    pub fn new_static(
+        provider: &BlobDataProvider,
+    ) -> Self {
         let ptr =
-            icu_segmenter::LineBreakSegmenter::try_new_unstable(&icu_testdata::unstable()).unwrap();
+            icu_segmenter::LineBreakSegmenter::try_new_with_buffer_provider(
+                provider
+            ).unwrap();
+        Self { ptr }
+    }
+
+    #[cfg(feature = "icu4x-baked")]
+    pub fn new_baked(
+        provider: &data::BakedDataProvider,
+    ) -> Self {
+        let ptr =
+            icu_segmenter::LineBreakSegmenter::try_new_with_any_provider(
+                provider
+            ).unwrap();
         Self { ptr }
     }
 
@@ -41,10 +66,34 @@ pub struct WordSegmenter {
 }
 
 impl WordSegmenter {
+    pub fn get_static_provider() -> BlobDataProvider {
+        BlobDataProvider::try_new_from_static_blob(&ICU4X_DATA).expect("Failed to load data")
+    }
+
+    #[cfg(feature = "icu4x-baked")]
+    pub fn get_baked_provider() -> data::BakedDataProvider {
+        data::BakedDataProvider
+    }
+
     #[cfg(feature = "icu4x-static")]
-    pub fn new_static() -> Self {
+    pub fn new_static(
+        provider: &BlobDataProvider,
+    ) -> Self {
         let ptr =
-            icu_segmenter::WordBreakSegmenter::try_new_unstable(&icu_testdata::unstable()).unwrap();
+            icu_segmenter::WordBreakSegmenter::try_new_with_buffer_provider(
+                provider
+            ).unwrap();
+        Self { ptr }
+    }
+
+    #[cfg(feature = "icu4x-baked")]
+    pub fn new_baked(
+        provider: &data::BakedDataProvider,
+    ) -> Self {
+        let ptr =
+            icu_segmenter::WordBreakSegmenter::try_new_with_any_provider(
+                provider
+            ).unwrap();
         Self { ptr }
     }
 

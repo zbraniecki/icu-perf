@@ -20,7 +20,8 @@ fn main() {
     {
         #[cfg(feature = "icu4x-static")]
         {
-            let nf = icu4x::WordSegmenter::new_static();
+            let provider = icu4x::WordSegmenter::get_static_provider();
+            let nf = icu4x::WordSegmenter::new_static(&provider);
             let result: Vec<_> = nf.segment(value).collect();
             println!("ICU4X (static): {:?}", result);
         }

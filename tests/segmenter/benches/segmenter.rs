@@ -22,7 +22,8 @@ fn number(c: &mut Criterion) {
         c.bench_function("icu4x/static/segmenter/word/overview", |b| {
             b.iter(|| {
                 for test in tests.0.iter() {
-                    let seg = icu4x::WordSegmenter::new_static();
+                    let provider = icu4x::WordSegmenter::get_static_provider();
+                    let seg = icu4x::WordSegmenter::new_static(&provider);
                     let _ = seg.segment(test.input).count();
                 }
             })
@@ -30,7 +31,30 @@ fn number(c: &mut Criterion) {
         c.bench_function("icu4x/static/segmenter/line/overview", |b| {
             b.iter(|| {
                 for test in tests.0.iter() {
-                    let seg = icu4x::LineSegmenter::new_static();
+                    let provider = icu4x::WordSegmenter::get_static_provider();
+                    let seg = icu4x::LineSegmenter::new_static(&provider);
+                    let _ = seg.segment(test.input).count();
+                }
+            })
+        });
+    }
+
+    #[cfg(feature = "icu4x-baked")]
+    {
+        c.bench_function("icu4x/baked/segmenter/word/overview", |b| {
+            b.iter(|| {
+                for test in tests.0.iter() {
+                    let provider = icu4x::WordSegmenter::get_baked_provider();
+                    let seg = icu4x::WordSegmenter::new_baked(&provider);
+                    let _ = seg.segment(test.input).count();
+                }
+            })
+        });
+        c.bench_function("icu4x/baked/segmenter/line/overview", |b| {
+            b.iter(|| {
+                for test in tests.0.iter() {
+                    let provider = icu4x::WordSegmenter::get_baked_provider();
+                    let seg = icu4x::LineSegmenter::new_baked(&provider);
                     let _ = seg.segment(test.input).count();
                 }
             })

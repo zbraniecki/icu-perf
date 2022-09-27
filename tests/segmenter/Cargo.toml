@@ -5,13 +5,13 @@ edition = "2021"
 links = "icuuc"
 
 [dependencies]
-icu_segmenter = { path = "../../../icu4x/experimental/segmenter", optional = true }
+icu_segmenter = { path = "../../../icu4x/experimental/segmenter", features = ["serde"], optional = true }
 icu_locid = { path = "../../../icu4x/components/locid", optional = true }
 icu_provider_blob = { path = "../../../icu4x/provider/blob", optional = true }
 icu_provider = { path = "../../../icu4x/provider/core", optional = true }
 icu_testdata = { path = "../../../icu4x/provider/testdata", optional = true, features = ["icu_segmenter"] }
 icu_provider_adapters = { path = "../../../icu4x/provider/adapters", optional = true }
-icu = { path = "../../../icu4x/components/icu", optional = true }
+icu = { path = "../../../icu4x/components/icu", optional = true, features = ["experimental"] }
 zerovec = { path = "../../../icu4x/utils/zerovec", optional = true }
 litemap = { path = "../../../icu4x/utils/litemap", optional = true }
 writeable = { path = "../../../icu4x/utils/writeable", optional = true }
