@@ -4,7 +4,7 @@ use criterion::criterion_main;
 use criterion::Criterion;
 
 mod data {
-    include!(concat!(env!("CARGO_MANIFEST_DIR"), "/data/number.rs"));
+    include!(concat!(env!("CARGO_MANIFEST_DIR"), "/data/structs.rs"));
 }
 
 #[cfg(feature = "icu4c")]
