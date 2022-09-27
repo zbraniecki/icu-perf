@@ -1,0 +1,122 @@
+[
+    {
+	"langid": "und",
+	"values": [
+	    {
+	        "left": "Hello",
+		"right": "World",
+		"output": "Less"
+	    }
+	]
+    },
+    {
+	"langid": "und",
+	"values": [
+	    {
+	        "left": "Amanda",
+		"right": "Amenda",
+		"output": "Less"
+	    }
+	]
+    },
+    {
+	"langid": "pl",
+	"values": [
+	    {
+		"left": "Marzyciel",
+		"right": "Mażyciel",
+	        "output": ""
+	    }
+	]
+    },
+    {
+	"langid": "ar",
+	"values": [
+	    {
+		"left": "Nauczyciel",
+		"right": "Nauczycielka",
+		"output": ""
+	    }
+	]
+    },
+    {
+	"langid": "ro",
+	"values": [
+	    {
+		"left": "roman",
+		"right": "român",
+		"output": ""
+	    }
+	]
+    },
+    {
+	"langid": "und",
+	"values": [
+	    {
+		"left": "Wezuwiusz",
+		"right": "wezuwiusz",
+		"output": ""
+	    }
+	]
+    },
+    {
+	"langid": "fi",
+	"values": [
+	    {
+		"left": "Super Bowl",
+		"right": "Super Brawl",
+		"output": ""
+	    }
+	]
+    },
+    {
+	"langid": "und",
+	"values": [
+	    {
+		"left": "Armageddon",
+		"right": "armageddon",
+		"output": ""
+	    }
+	]
+    },
+    {
+	"langid": "und",
+	"values": [
+	    {
+		"left": "Our 10 Principles",
+		"right": "Our Ten Principles",
+		"output": ""
+	    }
+	]
+    },
+    {
+	"langid": "ar",
+	"values": [
+	    {
+		"left": "يحدها من الشمال",
+		"right": "يحدها من الشمال",
+		"output": ""
+	    }
+	]
+    },
+    {
+	"langid": "und",
+	"values": [
+	    {
+		"left": "Trump’s legal team",
+		"right": "Trump",
+		"output": ""
+	    }
+	]
+    },
+    {
+	"langid": "und",
+	"values": [
+	    {
+		"left": "Samsung",
+		"right": "Samsung's",
+		"output": ""
+	    }
+	]
+    }
+]

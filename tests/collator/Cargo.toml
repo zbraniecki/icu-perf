@@ -5,21 +5,20 @@ edition = "2021"
 links = "icui18n"
 
 [dependencies]
-intl-harness = { path = "../../../harness" }
-icu_collator = { path = "../../../../icu4x/components/collator", features = ["serde"], optional = true }
-icu_locid = { path = "../../../../icu4x/components/locid", optional = true }
-icu_provider_blob = { path = "../../../../icu4x/provider/blob", optional = true }
-icu_provider = { path = "../../../../icu4x/provider/core", optional = true }
-icu_provider_adapters = { path = "../../../../icu4x/provider/adapters", optional = true }
-icu = { path = "../../../../icu4x/components/icu", optional = true }
-zerovec = { path = "../../../../icu4x/utils/zerovec", optional = true }
-litemap = { path = "../../../../icu4x/utils/litemap", optional = true }
-writeable = { path = "../../../../icu4x/utils/writeable", optional = true }
+icu_collator = { path = "../../../icu4x/components/collator", features = ["serde"], optional = true }
+icu_locid = { path = "../../../icu4x/components/locid", optional = true }
+icu_provider_blob = { path = "../../../icu4x/provider/blob", optional = true }
+icu_provider = { path = "../../../icu4x/provider/core", optional = true }
+icu_provider_adapters = { path = "../../../icu4x/provider/adapters", optional = true }
+icu = { path = "../../../icu4x/components/icu", optional = true }
+zerovec = { path = "../../../icu4x/utils/zerovec", optional = true }
+litemap = { path = "../../../icu4x/utils/litemap", optional = true }
+writeable = { path = "../../../icu4x/utils/writeable", optional = true }
 libc = { version = "0.2", optional = true }
 
 [dev-dependencies]
 criterion = "0.3"
-icu_locid = { path = "../../../../icu4x/components/locid" }
+icu_locid = { path = "../../../icu4x/components/locid" }
 serde = "1"
 serde_json = "1"
 
@@ -30,5 +29,5 @@ icu4x-baked = ["icu4x", "icu_provider_adapters", "litemap", "zerovec", "icu", "i
 icu4c = ["libc"]
 
 [[bench]]
-name = "number"
+name = "collator"
 harness = false
