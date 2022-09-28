@@ -14,42 +14,44 @@ ICU4C_STUBDATA_LIB := ../../icu4c-opt-size/build/stubdata
 debug.elf: main.c
 	$(CLANG) -static main.c -o $@ \
 		-flto=thin -fuse-ld=$(LLD) \
-		$(ICU4C_LIB)/libicui18n.a \
-		$(ICU4C_LIB)/libicuuc.a \
-		$(ICU4C_LIB)/libicudata.a \
-		-stdlib=libc++ -lstdc++ -lm -ldl -lpthread \
+		-stdlib=libc++ \
+		-licui18n -licuuc -licudata \
+		-lstdc++ -lm -ldl -lpthread \
 		-I$(ICU4C_INCLUDE) \
+		-L$(ICU4C_LIB) \
 		-Wl,--gc-sections
 
 strip.elf: main.c
 	$(CLANG) -static main.c -o $@ \
 		-flto=thin -fuse-ld=$(LLD) \
-		$(ICU4C_LIB)/libicui18n.a \
-		$(ICU4C_LIB)/libicuuc.a \
-		$(ICU4C_LIB)/libicudata.a \
-		-stdlib=libc++ -lstdc++ -lm -ldl -lpthread \
+		-stdlib=libc++ \
+		-licui18n -licuuc -licudata \
+		-lstdc++ -lm -ldl -lpthread \
 		-I$(ICU4C_INCLUDE) \
+		-L$(ICU4C_LIB) \
 		-Wl,--gc-sections \
 		-Wl,--strip-all
 
 stub_debug.elf: main.c
 	$(CLANG) -static main.c -o $@ \
 		-flto=thin -fuse-ld=$(LLD) \
-		$(ICU4C_LIB)/libicui18n.a \
-		$(ICU4C_LIB)/libicuuc.a \
-		$(ICU4C_STUBDATA_LIB)/libicudata.a \
-		-stdlib=libc++ -lstdc++ -lm -ldl -lpthread \
+		-stdlib=libc++ \
+		-licui18n -licuuc -licudata \
+		-lstdc++ -lm -ldl -lpthread \
 		-I$(ICU4C_INCLUDE) \
+		-L$(ICU4C_STUBDATA_LIB) \
+		-L$(ICU4C_LIB) \
 		-Wl,--gc-sections
 
 stub_strip.elf: main.c
 	$(CLANG) -static main.c -o $@ \
 		-flto=thin -fuse-ld=$(LLD) \
-		$(ICU4C_LIB)/libicui18n.a \
-		$(ICU4C_LIB)/libicuuc.a \
-		$(ICU4C_STUBDATA_LIB)/libicudata.a \
-		-stdlib=libc++ -lstdc++ -lm -ldl -lpthread \
+		-stdlib=libc++ \
+		-licui18n -licuuc -licudata \
+		-lstdc++ -lm -ldl -lpthread \
 		-I$(ICU4C_INCLUDE) \
+		-L$(ICU4C_STUBDATA_LIB) \
+		-L$(ICU4C_LIB) \
 		-Wl,--gc-sections \
 		-Wl,--strip-all
 
