@@ -5,7 +5,7 @@ use std::time::Instant;
 
 mod data {
     include!(concat!(env!("CARGO_MANIFEST_DIR"), "/data/structs.rs"));
-    include!(concat!(env!("CARGO_MANIFEST_DIR"), "/data/datetime.rs"));
+    // include!(concat!(env!("CARGO_MANIFEST_DIR"), "/data/datetime.rs"));
 }
 
 const TEST_DATA: &str = include_str!(concat!(env!("CARGO_MANIFEST_DIR"), "/data/datetime.json"));
@@ -15,17 +15,17 @@ fn main() {
 
     #[cfg(feature = "icu4c")]
     {
-        let now = Instant::now();
-        for test in tests.0.iter() {
-            for lid in test.langid.iter() {
-                let dtf = icu4c::DateTimeFormatter::new(lid);
-                for case in test.values.iter() {
-                    let result = dtf.format(case.input);
-                    // erintln!("{}", result);
-                }
-            }
-        }
-        let measured_us = now.elapsed().as_micros();
-        println!("Time: {} ns", measured_us);
+        // let now = Instant::now();
+        // for test in tests.0.iter() {
+        //     for lid in test.langid.iter() {
+        //         let dtf = icu4c::DateTimeFormatter::new(lid);
+        //         for case in test.values.iter() {
+        //             let result = dtf.format(case.input);
+        //             // erintln!("{}", result);
+        //         }
+        //     }
+        // }
+        // let measured_us = now.elapsed().as_micros();
+        // println!("Time: {} ns", measured_us);
     }
 }

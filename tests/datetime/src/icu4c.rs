@@ -7,7 +7,7 @@ extern "C" {
         timeStyle: libc::c_int,
         dateStyle: libc::c_int,
         locale: *const c_char,
-        tzID: *const libc::c_int,
+        tzID: *const u16,
         tzIDLength: libc::c_int,
         pattern: *const u16,
         patternLength: libc::c_int,
@@ -24,24 +24,37 @@ extern "C" {
     ) -> libc::c_int;
 }
 
+fn get_length(input: &str) -> libc::c_int {
+    match input {
+        "None" => -1,
+        "Short" => 3,
+        "Medium" => 2,
+        "Long" => 1,
+        "Full" => 0,
+        _ => unreachable!(),
+    }
+}
+
 pub struct DateTimeFormatter {
     ptr: *mut libc::c_void,
 }
 
 impl DateTimeFormatter {
-    pub fn new(langid: &str) -> Self {
-        let date_style = 2; // UDAT_MEDIUM
-        let time_style = 2; // UDAT_MEDIUM
+    pub fn new(langid: &str, date_style: &str, time_style: &str) -> Self {
+        let date_style = get_length(date_style);
+        let time_style = get_length(time_style);
         let locale = CString::new(langid).unwrap();
+        let tz: Vec<u16> = "GMT".encode_utf16().collect();
+        let tz_length = tz.len();
 
         let mut status = 0;
         let ptr = unsafe {
             udat_open_72(
-                date_style,
                 time_style,
+                date_style,
                 locale.as_ptr(),
-                std::ptr::null(),
-                -1,
+                tz.as_ptr(),
+                tz_length as i32,
                 std::ptr::null(),
                 -1,
                 &mut status,

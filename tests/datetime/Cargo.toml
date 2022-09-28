@@ -11,16 +11,12 @@ icu_calendar = { path = "../../../icu4x/components/calendar", optional = true }
 icu_provider_blob = { path = "../../../icu4x/provider/blob", optional = true }
 icu_provider = { path = "../../../icu4x/provider/core", optional = true }
 icu_provider_adapters = { path = "../../../icu4x/provider/adapters", optional = true }
-icu = { path = "../../../icu4x/components/icu", optional = true }
+icu = { path = "../../../icu4x/components/icu", features = ["experimental"], optional = true }
 libc = { version = "0.2", optional = true }
 zerovec = { path = "../../../icu4x/utils/zerovec", optional = true }
 litemap = { path = "../../../icu4x/utils/litemap", optional = true }
-# rust_icu_udat = { version = "2.0.3", optional = true }
-# rust_icu_uloc = { version = "2.0.3", optional = true }
-# rust_icu_sys = { version = "2.0.3", optional = true }
 serde = { version = "1.0", features = ["derive"], optional = true }
 serde_json = { version = "1", optional = true }
-# codegen = { version = "0.2", optional = true }
 
 [profile.release]
 panic = "abort"
@@ -38,10 +34,6 @@ icu4x = ["icu_datetime", "icu_calendar", "icu_locid"]
 icu4x-static = ["icu4x", "icu_provider_blob"]
 icu4x-baked = ["icu4x", "icu_provider_adapters", "litemap", "zerovec", "icu", "icu_provider"]
 icu4c = ["libc"]
-icu4cpp = []
-rust_icu = [
-    #"rust_icu_udat", "rust_icu_uloc", "rust_icu_sys"
-]
 gen = ["serde", "serde_json"]
 
 [[bench]]

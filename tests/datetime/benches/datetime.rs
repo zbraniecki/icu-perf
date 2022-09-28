@@ -27,9 +27,11 @@ fn datetime(c: &mut Criterion) {
                 for test in tests.0.iter() {
                     for lid in test.langid.iter() {
                         let langid: LanguageIdentifier = lid.parse().unwrap();
-                        let dtf = icu4x::DateTimeFormatter::new_static(&provider, &langid);
-                        for case in test.values.iter() {
-                            let _ = dtf.format(black_box(case.input));
+                        for case in test.cases.iter() {
+                            let dtf = icu4x::DateTimeFormatter::new_static(&provider, &langid, case.style.0, case.style.1);
+                            // for value in case.value.iter() {
+                            //     let _ = dtf.format(black_box(value.epoch));
+                            // }
                         }
                     }
                 }
@@ -47,9 +49,11 @@ fn datetime(c: &mut Criterion) {
                 for test in tests.0.iter() {
                     for lid in test.langid.iter() {
                         let langid: LanguageIdentifier = lid.parse().unwrap();
-                        let dtf = icu4x::DateTimeFormatter::new_baked(&provider, &langid);
-                        for case in test.values.iter() {
-                            let _ = dtf.format(black_box(case.input));
+                        for case in test.cases.iter() {
+                            let dtf = icu4x::DateTimeFormatter::new_baked(&provider, &langid, case.style.0, case.style.1);
+                            // for value in case.value.iter() {
+                            //     let _ = dtf.format(black_box(value.epoch));
+                            // }
                         }
                     }
                 }
@@ -63,9 +67,11 @@ fn datetime(c: &mut Criterion) {
             b.iter(|| {
                 for test in tests.0.iter() {
                     for lid in test.langid.iter() {
-                        let dtf = icu4c::DateTimeFormatter::new(lid);
-                        for case in test.values.iter() {
-                            let _ = dtf.format(black_box(case.input));
+                        for case in test.cases.iter() {
+                            let dtf = icu4c::DateTimeFormatter::new(lid, case.style.0, case.style.1);
+                            // for value in case.value.iter() {
+                            //     let _ = dtf.format(black_box(value.epoch));
+                            // }
                         }
                     }
                 }
