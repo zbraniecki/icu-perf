@@ -1,121 +1,138 @@
 [
     {
-	"langid": "und",
-	"values": [
+	"langids": ["und", "pl", "ar", "ro", "fi"],
+	"cases": [
 	    {
-	        "left": "Hello",
-		"right": "World",
-		"output": "Less"
-	    }
-	]
-    },
-    {
-	"langid": "und",
-	"values": [
+		"values": [
+		    {
+			"left": "Hello",
+			"right": "World",
+			"output": [
+			    ["und", "Less"]
+			]
+		    }
+		]
+	    },
 	    {
-	        "left": "Amanda",
-		"right": "Amenda",
-		"output": "Less"
-	    }
-	]
-    },
-    {
-	"langid": "pl",
-	"values": [
+		"values": [
+		    {
+			"left": "Amanda",
+			"right": "Amenda",
+			"output": [
+			    ["und", "Less"]
+			]
+		    }
+		]
+	    },
 	    {
-		"left": "Marzyciel",
-		"right": "Mażyciel",
-	        "output": ""
-	    }
-	]
-    },
-    {
-	"langid": "ar",
-	"values": [
+		"values": [
+		    {
+			"left": "Marzyciel",
+			"right": "Mażyciel",
+			"output": [
+			    ["und", "Less"]
+			]
+		    }
+		]
+	    },
 	    {
-		"left": "Nauczyciel",
-		"right": "Nauczycielka",
-		"output": ""
-	    }
-	]
-    },
-    {
-	"langid": "ro",
-	"values": [
+		"values": [
+		    {
+			"left": "Nauczyciel",
+			"right": "Nauczycielka",
+			"output": [
+			    ["und", "Less"]
+			]
+		    }
+		]
+	    },
 	    {
-		"left": "roman",
-		"right": "român",
-		"output": ""
-	    }
-	]
-    },
-    {
-	"langid": "und",
-	"values": [
+		"values": [
+		    {
+			"left": "roman",
+			"right": "român",
+			"output": [
+			    ["und", "Less"]
+			]
+		    }
+		]
+	    },
 	    {
-		"left": "Wezuwiusz",
-		"right": "wezuwiusz",
-		"output": ""
-	    }
-	]
-    },
-    {
-	"langid": "fi",
-	"values": [
+		"values": [
+		    {
+			"left": "Wezuwiusz",
+			"right": "wezuwiusz",
+			"output": [
+			    ["und", "Greater"]
+			]
+		    }
+		]
+	    },
 	    {
-		"left": "Super Bowl",
-		"right": "Super Brawl",
-		"output": ""
-	    }
-	]
-    },
-    {
-	"langid": "und",
-	"values": [
+		"values": [
+		    {
+			"left": "tähti",
+			"right": "tohti",
+			"output": [
+			    ["und", "Less"]
+			]
+		    }
+		]
+	    },
 	    {
-		"left": "Armageddon",
-		"right": "armageddon",
-		"output": ""
-	    }
-	]
-    },
-    {
-	"langid": "und",
-	"values": [
+		"values": [
+		    {
+			"left": "Armageddon",
+			"right": "armageddon",
+			"output": [
+			    ["und", "Greater"]
+			]
+		    }
+		]
+	    },
 	    {
-		"left": "Our 10 Principles",
-		"right": "Our Ten Principles",
-		"output": ""
-	    }
-	]
-    },
-    {
-	"langid": "ar",
-	"values": [
+		"values": [
+		    {
+			"left": "Our 10 Principles",
+			"right": "Our Ten Principles",
+			"output": [
+			    ["und", "Less"]
+			]
+		    }
+		]
+	    },
 	    {
-		"left": "يحدها من الشمال",
-		"right": "يحدها من الشمال",
-		"output": ""
-	    }
-	]
-    },
-    {
-	"langid": "und",
-	"values": [
+		"values": [
+		    {
+			"left": "يحدها من الشمال",
+			"right": "يحدها من الشمال",
+			"output": [
+			    ["und", "Equal"]
+			]
+		    }
+		]
+	    },
 	    {
-		"left": "Trump’s legal team",
-		"right": "Trump",
-		"output": ""
-	    }
-	]
-    },
-    {
-	"langid": "und",
-	"values": [
+		"values": [
+		    {
+			"left": "John’s legal team",
+			"right": "John",
+			"output": [
+			    ["und", "Greater"]
+			]
+		    }
+		]
+	    },
 	    {
-		"left": "Samsung",
-		"right": "Samsung's",
-		"output": ""
+		"values": [
+		    {
+			"left": "Samsung",
+			"right": "Samsung's",
+			"output": [
+			    ["und", "Less"]
+			]
+		    }
+		]
 	    }
 	]
     }

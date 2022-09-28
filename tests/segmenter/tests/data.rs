@@ -8,7 +8,6 @@ const TEST_DATA: &str = include_str!(concat!(env!("CARGO_MANIFEST_DIR"), "/data/
 #[test]
 fn test_data_icu4x() {
     let tests: data::TestData = serde_json::from_str(TEST_DATA).expect("Failed to parse test JSON");
-    use icu_locid::LanguageIdentifier;
     use icu_perf_test_segmenter::icu4x;
 
     let provider = icu4x::WordSegmenter::get_static_provider();

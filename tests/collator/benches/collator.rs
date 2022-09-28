@@ -19,16 +19,18 @@ fn number(c: &mut Criterion) {
 
     #[cfg(feature = "icu4x-static")]
     {
-        use icu_locid::LanguageIdentifier;
-
         c.bench_function("icu4x/static/collator/compare", |b| {
             b.iter(|| {
                 let provider = icu4x::Collator::get_static_provider();
                 for test in &tests.0 {
-                    let langid: LanguageIdentifier = test.langid.parse().unwrap();
-                    let col = icu4x::Collator::new_static(&provider, &langid);
-                    for case in &test.values {
-                        let _ = col.compare(black_box(case.left), black_box(case.right));
+                    for lid in test.langids.iter() {
+                        let langid: icu_locid::LanguageIdentifier = lid.parse().unwrap();
+                        for case in test.cases.iter() {
+                            let col = icu4x::Collator::new_static(&provider, &langid);
+                            for value in case.values.iter() {
+                                let _ = col.compare(black_box(value.left), black_box(value.right));
+                            }
+                        }
                     }
                 }
             })
@@ -37,16 +39,18 @@ fn number(c: &mut Criterion) {
 
     #[cfg(feature = "icu4x-baked")]
     {
-        use icu_locid::LanguageIdentifier;
-
         c.bench_function("icu4x/baked/collator/compare", |b| {
             b.iter(|| {
                 let provider = icu4x::Collator::get_baked_provider();
                 for test in &tests.0 {
-                    let langid: LanguageIdentifier = test.langid.parse().unwrap();
-                    let col = icu4x::Collator::new_baked(&provider, &langid);
-                    for case in &test.values {
-                        let _ = col.compare(black_box(case.left), black_box(case.right));
+                    for lid in test.langids.iter() {
+                        let langid: icu_locid::LanguageIdentifier = lid.parse().unwrap();
+                        for case in test.cases.iter() {
+                            let col = icu4x::Collator::new_baked(&provider, &langid);
+                            for value in case.values.iter() {
+                                let _ = col.compare(black_box(value.left), black_box(value.right));
+                            }
+                        }
                     }
                 }
             })
@@ -58,9 +62,13 @@ fn number(c: &mut Criterion) {
         c.bench_function("icu4c/common/collator/compare", |b| {
             b.iter(|| {
                 for test in &tests.0 {
-                    let col = icu4c::Collator::new(&test.langid);
-                    for case in &test.values {
-                        let _ = col.compare(black_box(case.left), black_box(case.right));
+                    for lid in test.langids.iter() {
+                        for case in test.cases.iter() {
+                            let col = icu4c::Collator::new(&lid);
+                            for value in case.values.iter() {
+                                let _ = col.compare(black_box(value.left), black_box(value.right));
+                            }
+                        }
                     }
                 }
             })

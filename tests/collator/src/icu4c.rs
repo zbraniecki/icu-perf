@@ -30,8 +30,8 @@ impl Collator {
     }
 
     pub fn compare(&self, left: &str, right: &str) -> Ordering {
-        let leftLength = left.len() as i32;
-        let rightLength = right.len() as i32;
+        let left_length = left.len() as i32;
+        let right_length = right.len() as i32;
         let left = CString::new(left).unwrap();
         let right = CString::new(right).unwrap();
         let mut status = 0;
@@ -40,9 +40,9 @@ impl Collator {
             ucol_strcollUTF8_72(
                 self.ptr,
                 left.as_ptr(),
-                leftLength,
+                left_length,
                 right.as_ptr(),
-                rightLength,
+                right_length,
                 &mut status,
             )
         };
