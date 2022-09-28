@@ -23,12 +23,14 @@ fn number(c: &mut Criterion) {
 
         c.bench_function("icu4x/static/number/number/format", |b| {
             b.iter(|| {
-                let provider = icu4x::NumberFormatter::get_static_provider();
                 for test in &tests.0 {
-                    let langid: LanguageIdentifier = test.langid.parse().unwrap();
-                    let dtf = icu4x::NumberFormatter::new_static(&provider, &langid);
-                    for case in &test.values {
-                        let _ = dtf.format(case.input);
+                    let provider = icu4x::NumberFormatter::get_static_provider();
+                    for lid in test.langid.iter() {
+                        let langid: LanguageIdentifier = lid.parse().unwrap();
+                        let nf = icu4x::NumberFormatter::new_static(&provider, &langid);
+                        for case in test.values.iter() {
+                            let _ = nf.format(black_box(case.input));
+                        }
                     }
                 }
             })
@@ -41,12 +43,14 @@ fn number(c: &mut Criterion) {
 
         c.bench_function("icu4x/baked/number/number/format", |b| {
             b.iter(|| {
-                let provider = icu4x::NumberFormatter::get_baked_provider();
                 for test in &tests.0 {
-                    let langid: LanguageIdentifier = test.langid.parse().unwrap();
-                    let nf = icu4x::NumberFormatter::new_baked(&provider, &langid);
-                    for case in &test.values {
-                        let _ = nf.format(case.input);
+                    let provider = icu4x::NumberFormatter::get_baked_provider();
+                    for lid in test.langid.iter() {
+                        let langid: LanguageIdentifier = lid.parse().unwrap();
+                        let nf = icu4x::NumberFormatter::new_baked(&provider, &langid);
+                        for case in test.values.iter() {
+                            let _ = nf.format(black_box(case.input));
+                        }
                     }
                 }
             })
@@ -58,9 +62,11 @@ fn number(c: &mut Criterion) {
         c.bench_function("icu4c/common/number/number/format", |b| {
             b.iter(|| {
                 for test in &tests.0 {
-                    let nf = icu4c::NumberFormatter::new(&test.langid);
-                    for case in &test.values {
-                        let _ = nf.format(case.input);
+                    for lid in test.langid.iter() {
+                        let nf = icu4c::NumberFormatter::new(lid);
+                        for case in test.values.iter() {
+                            let _ = nf.format(black_box(case.input));
+                        }
                     }
                 }
             })

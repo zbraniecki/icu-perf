@@ -1,3 +1,5 @@
+use fixed_decimal::{DoublePrecision, FixedDecimal};
+
 #[cfg(feature = "icu4x-baked")]
 pub mod data {
     include!(concat!(
@@ -59,9 +61,12 @@ impl NumberFormatter {
         Self { ptr }
     }
 
-    pub fn format(&self, input: i64) -> String {
+    pub fn format(&self, input: f64) -> String {
         use writeable::Writeable;
 
-        self.ptr.format(&input.into()).write_to_string().to_string()
+        let decimal = FixedDecimal::try_from_f64(input, DoublePrecision::Floating)
+            .expect("Finite quantity with limited precision");
+
+        self.ptr.format(&decimal).write_to_string().to_string()
     }
 }

@@ -19,6 +19,14 @@ extern "C" {
         pos: *const i32,
         status: *mut libc::c_int,
     ) -> libc::c_int;
+    pub fn unum_formatDouble_72(
+        formatter: *mut libc::c_void,
+        number: libc::c_double,
+        result: *mut u16,
+        resultLength: libc::c_int,
+        pos: *const i32,
+        status: *mut libc::c_int,
+    ) -> libc::c_int;
     pub fn unum_close_72(format: *mut libc::c_void);
 }
 
@@ -44,12 +52,12 @@ impl NumberFormatter {
         Self { ptr }
     }
 
-    pub fn format(&self, input: i64) -> String {
+    pub fn format(&self, input: f64) -> String {
         let mut status = 0;
         let mut storage = vec![0u16; 255];
 
         let new_capacity = unsafe {
-            unum_formatInt64_72(
+            unum_formatDouble_72(
                 self.ptr,
                 input,
                 storage.as_mut_ptr(),

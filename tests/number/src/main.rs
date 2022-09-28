@@ -5,7 +5,7 @@ use icu_perf_test_number::icu4c;
 use icu_perf_test_number::icu4x;
 
 fn main() {
-    let value = 27832853;
+    let value = 27832853.0;
     let langid = "en";
 
     #[cfg(feature = "icu4c")]
