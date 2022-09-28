@@ -1,6 +1,6 @@
 [
     {
-	"langids": ["und", "pl", "ar", "ro", "fi"],
+	"langids": ["und", "pl", "ar", "ro", "fi", "ja", "kk", "lv", "sr", "cs"],
 	"cases": [
 	    {
 		"values": [
@@ -10,121 +10,77 @@
 			"output": [
 			    ["und", "Less"]
 			]
-		    }
-		]
-	    },
-	    {
-		"values": [
+		    },
 		    {
 			"left": "Amanda",
 			"right": "Amenda",
 			"output": [
 			    ["und", "Less"]
 			]
-		    }
-		]
-	    },
-	    {
-		"values": [
+		    },
 		    {
 			"left": "Marzyciel",
 			"right": "Mażyciel",
 			"output": [
 			    ["und", "Less"]
 			]
-		    }
-		]
-	    },
-	    {
-		"values": [
-		    {
-			"left": "Nauczyciel",
-			"right": "Nauczycielka",
-			"output": [
-			    ["und", "Less"]
-			]
-		    }
-		]
-	    },
-	    {
-		"values": [
-		    {
-			"left": "roman",
-			"right": "român",
-			"output": [
-			    ["und", "Less"]
-			]
-		    }
-		]
-	    },
-	    {
-		"values": [
-		    {
-			"left": "Wezuwiusz",
-			"right": "wezuwiusz",
-			"output": [
-			    ["und", "Greater"]
-			]
-		    }
-		]
-	    },
-	    {
-		"values": [
+		    },
 		    {
 			"left": "tähti",
 			"right": "tohti",
 			"output": [
 			    ["und", "Less"]
 			]
-		    }
-		]
-	    },
-	    {
-		"values": [
-		    {
-			"left": "Armageddon",
-			"right": "armageddon",
-			"output": [
-			    ["und", "Greater"]
-			]
-		    }
-		]
-	    },
-	    {
-		"values": [
+		    },
 		    {
 			"left": "Our 10 Principles",
 			"right": "Our Ten Principles",
 			"output": [
 			    ["und", "Less"]
 			]
-		    }
-		]
-	    },
-	    {
-		"values": [
+		    },
+		    {
+			"left": "Nauczyciel",
+			"right": "Nauczycielka",
+			"output": [
+			    ["und", "Less"]
+			]
+		    },
+		    {
+			"left": "roman",
+			"right": "român",
+			"output": [
+			    ["und", "Less"]
+			]
+		    },
+		    {
+			"left": "Wezuwiusz",
+			"right": "wezuwiusz",
+			"output": [
+			    ["und", "Greater"]
+			]
+		    },
+		    {
+			"left": "Armageddon",
+			"right": "armageddon",
+			"output": [
+			    ["und", "Greater"]
+			]
+		    },
 		    {
 			"left": "يحدها من الشمال",
 			"right": "يحدها من الشمال",
 			"output": [
 			    ["und", "Equal"]
 			]
-		    }
-		]
-	    },
-	    {
-		"values": [
+		    },
 		    {
 			"left": "John’s legal team",
 			"right": "John",
 			"output": [
 			    ["und", "Greater"]
 			]
-		    }
-		]
-	    },
-	    {
-		"values": [
+		    },
 		    {
 			"left": "Samsung",
 			"right": "Samsung's",
