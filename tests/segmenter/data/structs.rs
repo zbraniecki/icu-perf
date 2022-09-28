@@ -1,9 +1,16 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(PartialEq, Eq, Debug, Serialize, Deserialize)]
+pub struct DivergentOutput {
+    pub line: Box<[usize]>,
+    pub word: Box<[usize]>,
+}
+
+#[derive(PartialEq, Eq, Debug, Serialize, Deserialize)]
 pub struct Output {
     pub line: Box<[usize]>,
     pub word: Box<[usize]>,
+    pub icu4c: Option<DivergentOutput>,
 }
 
 #[derive(PartialEq, Eq, Debug, Serialize, Deserialize)]

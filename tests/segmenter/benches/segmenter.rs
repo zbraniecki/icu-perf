@@ -63,7 +63,7 @@ fn number(c: &mut Criterion) {
 
     #[cfg(feature = "icu4c")]
     {
-        c.bench_function("icu4c/static/segmenter/word/overview", |b| {
+        c.bench_function("icu4c/static/segmenter/utf8/word/overview", |b| {
             b.iter(|| {
                 for test in tests.0.iter() {
                     let seg = icu4c::Segmenter::new(test.langid, test.input, true);
@@ -71,10 +71,33 @@ fn number(c: &mut Criterion) {
                 }
             })
         });
-        c.bench_function("icu4c/static/segmenter/line/overview", |b| {
+        c.bench_function("icu4c/static/segmenter/utf8/line/overview", |b| {
             b.iter(|| {
                 for test in tests.0.iter() {
                     let seg = icu4c::Segmenter::new(test.langid, test.input, false);
+                    let _ = seg.count();
+                }
+            })
+        });
+
+        let tests16: Vec<(&str, Vec<u16>)> = tests
+            .0
+            .iter()
+            .map(|c| (c.langid, c.input.encode_utf16().collect()))
+            .collect();
+
+        c.bench_function("icu4c/static/segmenter/utf16/word/overview", |b| {
+            b.iter(|| {
+                for (langid, input) in &tests16 {
+                    let seg = icu4c::Segmenter::new_utf16(langid, input, true);
+                    let _ = seg.count();
+                }
+            })
+        });
+        c.bench_function("icu4c/static/segmenter/utf16/line/overview", |b| {
+            b.iter(|| {
+                for (langid, input) in &tests16 {
+                    let seg = icu4c::Segmenter::new_utf16(langid, input, false);
                     let _ = seg.count();
                 }
             })

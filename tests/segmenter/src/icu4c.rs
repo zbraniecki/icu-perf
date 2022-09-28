@@ -28,6 +28,7 @@ extern "C" {
 
 pub struct Segmenter {
     ptr: *mut libc::c_void,
+    input: Option<Vec<u16>>,
 }
 
 impl Segmenter {
@@ -46,7 +47,27 @@ impl Segmenter {
                 &mut status,
             )
         };
-        Self { ptr }
+        Self {
+            ptr,
+            input: Some(input),
+        }
+    }
+
+    pub fn new_utf16(langid: &str, input: &[u16], word: bool) -> Self {
+        let locale = CString::new(langid).unwrap();
+        let inputLen = input.len();
+
+        let mut status = 0;
+        let ptr = unsafe {
+            ubrk_open_72(
+                if word { 1 } else { 2 }, // WORD or LINE
+                locale.as_ptr(),
+                input.as_ptr(),
+                inputLen as i32,
+                &mut status,
+            )
+        };
+        Self { ptr, input: None }
     }
 }
 
@@ -55,10 +76,10 @@ impl Iterator for Segmenter {
 
     fn next(&mut self) -> Option<Self::Item> {
         let idx = unsafe { ubrk_next_72(self.ptr) };
-        if idx >= 0 {
-            Some(idx)
-        } else {
+        if idx == -1 {
             None
+        } else {
+            Some(idx)
         }
     }
 }

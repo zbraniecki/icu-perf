@@ -5,13 +5,14 @@ use icu_perf_test_segmenter::icu4c;
 use icu_perf_test_segmenter::icu4x;
 
 fn main() {
-    let langid = "de";
-    let value = "Unter anderem war die Tatwaffe, eine Luger-Pistole, am Tag nach dem Mord in die Hände des
-      Verfassungsschutzes gelangt, wo sie anschließend für 15 Jahre in einem Tresor versteckt und dies absichtlich vor den Strafverfolgungsbehörden verheimlicht wurde";
+    let langid = "en";
+    let value = "Hello World";
+    // let value = "Unter anderem war die Tatwaffe, eine Luger-Pistole, am Tag nach dem Mord in die Hände des
+    // Verfassungsschutzes gelangt, wo sie anschließend für 15 Jahre in einem Tresor versteckt und dies absichtlich vor den Strafverfolgungsbehörden verheimlicht wurde";
 
     #[cfg(feature = "icu4c")]
     {
-        let seg = icu4c::Segmenter::new(langid, value, true);
+        let seg = icu4c::Segmenter::new(langid, value, false);
         let result: Vec<_> = seg.collect();
         println!("ICU4C: {:?}", result);
     }
