@@ -28,14 +28,15 @@ extern "C" {
 
 pub struct Segmenter {
     ptr: *mut libc::c_void,
-    input: Option<Vec<u16>>,
+    // Need to hold onto it if we converted it from utf8
+    _input: Option<Vec<u16>>,
 }
 
 impl Segmenter {
     pub fn new(langid: &str, input: &str, word: bool) -> Self {
         let locale = CString::new(langid).unwrap();
         let input: Vec<u16> = input.encode_utf16().collect();
-        let inputLen = input.len();
+        let input_len = input.len();
 
         let mut status = 0;
         let ptr = unsafe {
@@ -43,19 +44,19 @@ impl Segmenter {
                 if word { 1 } else { 2 }, // WORD or LINE
                 locale.as_ptr(),
                 input.as_ptr(),
-                inputLen as i32,
+                input_len as i32,
                 &mut status,
             )
         };
         Self {
             ptr,
-            input: Some(input),
+            _input: Some(input),
         }
     }
 
     pub fn new_utf16(langid: &str, input: &[u16], word: bool) -> Self {
         let locale = CString::new(langid).unwrap();
-        let inputLen = input.len();
+        let input_len = input.len();
 
         let mut status = 0;
         let ptr = unsafe {
@@ -63,11 +64,11 @@ impl Segmenter {
                 if word { 1 } else { 2 }, // WORD or LINE
                 locale.as_ptr(),
                 input.as_ptr(),
-                inputLen as i32,
+                input_len as i32,
                 &mut status,
             )
         };
-        Self { ptr, input: None }
+        Self { ptr, _input: None }
     }
 }
 

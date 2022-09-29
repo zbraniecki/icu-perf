@@ -4,11 +4,11 @@ use std::cmp::Ordering;
 pub mod data {
     include!(concat!(
         env!("CARGO_MANIFEST_DIR"),
-        "/src/icu4x/data/mod.rs"
+        "/../../data/icu4x-1.0.rs/mod.rs"
     ));
     include!(concat!(
         env!("CARGO_MANIFEST_DIR"),
-        "/src/icu4x/data/any.rs"
+        "/../../data/icu4x-1.0.rs/any.rs"
     ));
 }
 
