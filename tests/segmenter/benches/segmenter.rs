@@ -22,18 +22,22 @@ fn number(c: &mut Criterion) {
         c.bench_function("icu4x/static/segmenter/word/overview", |b| {
             b.iter(|| {
                 let provider = icu4x::WordSegmenter::get_static_provider();
-                for test in tests.0.iter() {
+                for case in tests.0.iter() {
                     let seg = icu4x::WordSegmenter::new_static(&provider);
-                    let _ = seg.segment(test.input).count();
+                    for value in case.values.iter() {
+                        let _ = seg.segment(value.input).count();
+                    }
                 }
             })
         });
         c.bench_function("icu4x/static/segmenter/line/overview", |b| {
             b.iter(|| {
                 let provider = icu4x::WordSegmenter::get_static_provider();
-                for test in tests.0.iter() {
+                for case in tests.0.iter() {
                     let seg = icu4x::LineSegmenter::new_static(&provider);
-                    let _ = seg.segment(test.input).count();
+                    for value in case.values.iter() {
+                        let _ = seg.segment(value.input).count();
+                    }
                 }
             })
         });
@@ -44,18 +48,22 @@ fn number(c: &mut Criterion) {
         c.bench_function("icu4x/baked/segmenter/word/overview", |b| {
             b.iter(|| {
                 let provider = icu4x::WordSegmenter::get_baked_provider();
-                for test in tests.0.iter() {
+                for case in tests.0.iter() {
                     let seg = icu4x::WordSegmenter::new_baked(&provider);
-                    let _ = seg.segment(test.input).count();
+                    for value in case.values.iter() {
+                        let _ = seg.segment(value.input).count();
+                    }
                 }
             })
         });
         c.bench_function("icu4x/baked/segmenter/line/overview", |b| {
             b.iter(|| {
                 let provider = icu4x::WordSegmenter::get_baked_provider();
-                for test in tests.0.iter() {
+                for case in tests.0.iter() {
                     let seg = icu4x::LineSegmenter::new_baked(&provider);
-                    let _ = seg.segment(test.input).count();
+                    for value in case.values.iter() {
+                        let _ = seg.segment(value.input).count();
+                    }
                 }
             })
         });
@@ -65,40 +73,51 @@ fn number(c: &mut Criterion) {
     {
         c.bench_function("icu4c/static/segmenter/utf8/word/overview", |b| {
             b.iter(|| {
-                for test in tests.0.iter() {
-                    let seg = icu4c::Segmenter::new(test.langid, test.input, true);
-                    let _ = seg.count();
+                for case in tests.0.iter() {
+                    for value in case.values.iter() {
+                        let seg = icu4c::Segmenter::new(case.langid, value.input, true);
+                        let _ = seg.count();
+                    }
                 }
             })
         });
         c.bench_function("icu4c/static/segmenter/utf8/line/overview", |b| {
             b.iter(|| {
-                for test in tests.0.iter() {
-                    let seg = icu4c::Segmenter::new(test.langid, test.input, false);
-                    let _ = seg.count();
+                for case in tests.0.iter() {
+                    for value in case.values.iter() {
+                        let seg = icu4c::Segmenter::new(case.langid, value.input, false);
+                        let _ = seg.count();
+                    }
                 }
             })
         });
 
-        let tests16: Vec<(&str, Vec<u16>)> = tests
+        let tests16: Vec<(&str, Vec<Vec<u16>>)> = tests
             .0
             .iter()
-            .map(|c| (c.langid, c.input.encode_utf16().collect()))
+            .map(|c| (
+                    c.langid,
+                    c.values.iter().map(|v| v.input.encode_utf16().collect()).collect()
+            ))
             .collect();
 
         c.bench_function("icu4c/static/segmenter/utf16/word/overview", |b| {
             b.iter(|| {
-                for (langid, input) in &tests16 {
-                    let seg = icu4c::Segmenter::new_utf16(langid, input, true);
-                    let _ = seg.count();
+                for (langid, values) in &tests16 {
+                    for value in values {
+                        let seg = icu4c::Segmenter::new_utf16(langid, value, true);
+                        let _ = seg.count();
+                    }
                 }
             })
         });
         c.bench_function("icu4c/static/segmenter/utf16/line/overview", |b| {
             b.iter(|| {
-                for (langid, input) in &tests16 {
-                    let seg = icu4c::Segmenter::new_utf16(langid, input, false);
-                    let _ = seg.count();
+                for (langid, values) in &tests16 {
+                    for value in values {
+                        let seg = icu4c::Segmenter::new_utf16(langid, value, false);
+                        let _ = seg.count();
+                    }
                 }
             })
         });

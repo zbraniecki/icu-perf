@@ -20,7 +20,7 @@ use icu_provider_blob::BlobDataProvider;
 #[cfg(feature = "icu4x-static")]
 const ICU4X_DATA: &[u8] = include_bytes!(concat!(
     env!("CARGO_MANIFEST_DIR"),
-    "/../../data/icu4x-1.0-plurals.postcard"
+    "/../../data/icu4x-1.0.postcard"
 ));
 
 pub struct PluralRules {
@@ -39,12 +39,20 @@ impl PluralRules {
     }
 
     #[cfg(feature = "icu4x-static")]
-    pub fn new_static(provider: &BlobDataProvider, langid: &icu_locid::LanguageIdentifier) -> Self {
-        let ptr = icu_plurals::PluralRules::try_new_cardinal_with_buffer_provider(
-            provider,
-            &langid.into(),
-        )
-        .unwrap();
+    pub fn new_static(provider: &BlobDataProvider, langid: &icu_locid::LanguageIdentifier, cardinal: bool) -> Self {
+        let ptr = if cardinal {
+            icu_plurals::PluralRules::try_new_cardinal_with_buffer_provider(
+                provider,
+                &langid.into(),
+            )
+            .unwrap()
+        } else {
+            icu_plurals::PluralRules::try_new_ordinal_with_buffer_provider(
+                provider,
+                &langid.into(),
+            )
+            .unwrap()
+        };
         Self { ptr }
     }
 
@@ -52,10 +60,15 @@ impl PluralRules {
     pub fn new_baked(
         provider: &data::BakedDataProvider,
         langid: &icu_locid::LanguageIdentifier,
+        cardinal: bool,
     ) -> Self {
-        let ptr =
+        let ptr = if cardinal {
             icu_plurals::PluralRules::try_new_cardinal_with_any_provider(provider, &langid.into())
-                .unwrap();
+                .unwrap()
+        } else {
+            icu_plurals::PluralRules::try_new_ordinal_with_any_provider(provider, &langid.into())
+                .unwrap()
+        };
         Self { ptr }
     }
 

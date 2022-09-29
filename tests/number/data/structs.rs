@@ -7,17 +7,24 @@ pub struct LocaleOutput<'s> {
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct TestCase<'s> {
+pub struct TestValue<'s> {
     pub input: f64,
     #[serde(borrow)]
     pub output: Box<[(&'s str, &'s str)]>,
 }
 
 #[derive(Serialize, Deserialize)]
+pub struct TestCase<'s> {
+    pub grouping: &'s str,
+    #[serde(borrow)]
+    pub values: Vec<TestValue<'s>>,
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct LocaleTestData<'s> {
     pub langid: Box<[&'s str]>,
     #[serde(borrow)]
-    pub values: Vec<TestCase<'s>>,
+    pub cases: Vec<TestCase<'s>>,
 }
 
 #[derive(Serialize, Deserialize)]

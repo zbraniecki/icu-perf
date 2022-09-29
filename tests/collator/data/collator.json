@@ -54,7 +54,7 @@
 			]
 		    },
 		    {
-			"left": "Wezuwiusz",
+			"left": "wezuwiusz",
 			"right": "wezuwiusz",
 			"output": [
 			    ["und", "Greater"]
@@ -76,14 +76,42 @@
 		    },
 		    {
 			"left": "John’s legal team",
-			"right": "John",
+			"right": "John's",
 			"output": [
 			    ["und", "Greater"]
 			]
 		    },
 		    {
-			"left": "Samsung",
+			"left": "Samsung'",
 			"right": "Samsung's",
+			"output": [
+			    ["und", "Less"]
+			]
+		    },
+		    {
+			"left": "pêche",
+			"right": "péché",
+			"output": [
+			    ["und", "Less"]
+			]
+		    },
+		    {
+			"left": "dâtabase",
+			"right": "data",
+			"output": [
+			    ["und", "Less"]
+			]
+		    },
+		    {
+			"left": "database",
+			"right": "databasE",
+			"output": [
+			    ["und", "Less"]
+			]
+		    },
+		    {
+			"left": "database",
+			"right": "database",
 			"output": [
 			    ["und", "Less"]
 			]

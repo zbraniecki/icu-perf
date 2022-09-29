@@ -14,10 +14,16 @@ pub struct Output {
 }
 
 #[derive(PartialEq, Eq, Debug, Serialize, Deserialize)]
-pub struct TestCase<'s> {
-    pub langid: &'s str,
+pub struct TestValue<'s> {
     pub input: &'s str,
     pub output: Output,
+}
+
+#[derive(PartialEq, Eq, Debug, Serialize, Deserialize)]
+pub struct TestCase<'s> {
+    pub langid: &'s str,
+    #[serde(borrow)]
+    pub values: Box<[TestValue<'s>]>
 }
 
 #[derive(PartialEq, Eq, Debug, Serialize, Deserialize)]

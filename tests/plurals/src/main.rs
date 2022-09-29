@@ -10,8 +10,8 @@ fn main() {
 
     #[cfg(feature = "icu4c")]
     {
-        let nf = icu4c::PluralRules::new(langid);
-        let result = nf.select(value);
+        let pr = icu4c::PluralRules::new(langid, true);
+        let result = pr.select(value);
         println!("ICU4C: {:?}", result);
     }
 
@@ -23,16 +23,16 @@ fn main() {
         #[cfg(feature = "icu4x-static")]
         {
             let provider = icu4x::PluralRules::get_static_provider();
-            let nf = icu4x::PluralRules::new_static(&provider, &en);
-            let result = nf.select(value);
+            let pr = icu4x::PluralRules::new_static(&provider, &en, true);
+            let result = pr.select(value);
             println!("ICU4X (static): {:?}", result);
         }
 
         #[cfg(feature = "icu4x-baked")]
         {
             let provider = icu4x::PluralRules::get_baked_provider();
-            let nf = icu4x::PluralRules::new_baked(&provider, &en);
-            let result = nf.select(value);
+            let pr = icu4x::PluralRules::new_baked(&provider, &en, true);
+            let result = pr.select(value);
             println!("ICU4X (static): {:?}", result);
         }
     }

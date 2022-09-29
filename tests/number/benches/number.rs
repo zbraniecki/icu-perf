@@ -27,9 +27,11 @@ fn number(c: &mut Criterion) {
                     let provider = icu4x::NumberFormatter::get_static_provider();
                     for lid in test.langid.iter() {
                         let langid: LanguageIdentifier = lid.parse().unwrap();
-                        let nf = icu4x::NumberFormatter::new_static(&provider, &langid);
-                        for case in test.values.iter() {
-                            let _ = nf.format(black_box(case.input));
+                        for case in test.cases.iter() {
+                            let nf = icu4x::NumberFormatter::new_static(&provider, &langid);
+                            for value in case.values.iter() {
+                                let _ = nf.format(black_box(value.input));
+                            }
                         }
                     }
                 }
@@ -47,9 +49,11 @@ fn number(c: &mut Criterion) {
                     let provider = icu4x::NumberFormatter::get_baked_provider();
                     for lid in test.langid.iter() {
                         let langid: LanguageIdentifier = lid.parse().unwrap();
-                        let nf = icu4x::NumberFormatter::new_baked(&provider, &langid);
-                        for case in test.values.iter() {
-                            let _ = nf.format(black_box(case.input));
+                        for case in test.cases.iter() {
+                            let nf = icu4x::NumberFormatter::new_baked(&provider, &langid);
+                            for value in case.values.iter() {
+                                let _ = nf.format(black_box(value.input));
+                            }
                         }
                     }
                 }
@@ -63,9 +67,11 @@ fn number(c: &mut Criterion) {
             b.iter(|| {
                 for test in &tests.0 {
                     for lid in test.langid.iter() {
-                        let nf = icu4c::NumberFormatter::new(lid);
-                        for case in test.values.iter() {
-                            let _ = nf.format(black_box(case.input));
+                        for case in test.cases.iter() {
+                            let nf = icu4c::NumberFormatter::new(lid);
+                            for value in case.values.iter() {
+                                let _ = nf.format(black_box(value.input));
+                            }
                         }
                     }
                 }

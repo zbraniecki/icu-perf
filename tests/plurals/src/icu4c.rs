@@ -4,7 +4,11 @@ use std::os::raw::c_char;
 
 #[link(name = "icui18n")]
 extern "C" {
-    pub fn uplrules_open_72(locale: *const c_char, status: *mut libc::c_int) -> *mut libc::c_void;
+    pub fn uplrules_openForType_72(
+        locale: *const c_char,
+        r#type: libc::c_int, // 0 = CARDINAL, 1 = ORDINAL
+        status: *mut libc::c_int
+    ) -> *mut libc::c_void;
     pub fn uplrules_select_72(
         pr: *mut libc::c_void,
         number: libc::c_double,
@@ -20,11 +24,15 @@ pub struct PluralRules {
 }
 
 impl PluralRules {
-    pub fn new(langid: &str) -> Self {
+    pub fn new(langid: &str, cardinal: bool) -> Self {
         let locale = CString::new(langid).unwrap();
 
         let mut status = 0;
-        let ptr = unsafe { uplrules_open_72(locale.as_ptr(), &mut status) };
+        let ptr = unsafe { uplrules_openForType_72(
+                locale.as_ptr(),
+                if cardinal { 0 } else { 1 },
+                &mut status
+        ) };
         Self { ptr }
     }
 

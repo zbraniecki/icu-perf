@@ -27,9 +27,12 @@ fn plurals(c: &mut Criterion) {
                     let provider = icu4x::PluralRules::get_static_provider();
                     for lid in test.langid.iter() {
                         let langid: LanguageIdentifier = lid.parse().unwrap();
-                        let pr = icu4x::PluralRules::new_static(&provider, &langid);
-                        for case in test.values.iter() {
-                            let _ = pr.select(black_box(case.input));
+                        for case in test.cases.iter() {
+                            let cardinal = case.style == "cardinal";
+                            let pr = icu4x::PluralRules::new_static(&provider, &langid, cardinal);
+                            for value in case.values.iter() {
+                                let _ = pr.select(black_box(value.input));
+                            }
                         }
                     }
                 }
@@ -47,9 +50,12 @@ fn plurals(c: &mut Criterion) {
                     let provider = icu4x::PluralRules::get_baked_provider();
                     for lid in test.langid.iter() {
                         let langid: LanguageIdentifier = lid.parse().unwrap();
-                        let pr = icu4x::PluralRules::new_baked(&provider, &langid);
-                        for case in test.values.iter() {
-                            let _ = pr.select(black_box(case.input));
+                        for case in test.cases.iter() {
+                            let cardinal = case.style == "cardinal";
+                            let pr = icu4x::PluralRules::new_baked(&provider, &langid, cardinal);
+                            for value in case.values.iter() {
+                                let _ = pr.select(black_box(value.input));
+                            }
                         }
                     }
                 }
@@ -63,9 +69,12 @@ fn plurals(c: &mut Criterion) {
             b.iter(|| {
                 for test in &tests.0 {
                     for lid in test.langid.iter() {
-                        let pr = icu4c::PluralRules::new(lid);
-                        for case in test.values.iter() {
-                            let _ = pr.select(black_box(case.input));
+                        for case in test.cases.iter() {
+                            let cardinal = case.style == "cardinal";
+                            let pr = icu4c::PluralRules::new(lid, cardinal);
+                            for value in case.values.iter() {
+                                let _ = pr.select(black_box(value.input));
+                            }
                         }
                     }
                 }

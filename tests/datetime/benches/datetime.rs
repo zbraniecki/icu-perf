@@ -51,9 +51,9 @@ fn datetime(c: &mut Criterion) {
                         let langid: LanguageIdentifier = lid.parse().unwrap();
                         for case in test.cases.iter() {
                             let dtf = icu4x::DateTimeFormatter::new_baked(&provider, &langid, case.style.0, case.style.1);
-                            // for value in case.value.iter() {
-                            //     let _ = dtf.format(black_box(value.epoch));
-                            // }
+                            for value in case.value.iter() {
+                                let _ = dtf.format(black_box(value.epoch));
+                            }
                         }
                     }
                 }
@@ -69,9 +69,9 @@ fn datetime(c: &mut Criterion) {
                     for lid in test.langid.iter() {
                         for case in test.cases.iter() {
                             let dtf = icu4c::DateTimeFormatter::new(lid, case.style.0, case.style.1);
-                            // for value in case.value.iter() {
-                            //     let _ = dtf.format(black_box(value.epoch));
-                            // }
+                            for value in case.value.iter() {
+                                let _ = dtf.format(black_box(value.epoch));
+                            }
                         }
                     }
                 }

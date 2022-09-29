@@ -1,109 +1,64 @@
 [
     {
-	"langid": ["en"],
+	"langid": ["en", "pl", "ja", "de", "fr", "ru", "zh", "ar", "it", "fil"],
 	"cases": [
 	    {
-		"style": ["None", "None"],
+		"style": ["Long", "Medium"],
 	        "value": [
 		    {
 		        "epoch": 27832853,
 			"output": [
 			    ["en", ""]
 			]
-		    }
-		]
-	    },
-	    {
-		"style": ["None", "Short"],
-	        "value": [
+		    },
 		    {
 		        "epoch": 15932853,
 		        "output": [
 		            ["en", "11:33 AM"]
 		        ]
-		    }
-		]
-	    },
-	    {
-		"style": ["None", "Medium"],
-	        "value": [
+		    },
 		    {
 		        "epoch": 18932853,
 		        "output": [
 		            ["en", "7:33:00 PM"]
 		        ]
-		    }
-		]
-	    },
-	    {
-		"style": ["Short", "None"],
-		"value": [
+		    },
 		    {
 		        "epoch": 18932853,
 			"output": [
 			    ["en", "12/30/05"]
 			]
-		    }
-		]
-	    },
-	    {
-		"style": ["Medium", "None"],
-		"value": [
+		    },
 		    {
 		        "epoch": 16282853,
 			"output": [
 			    ["en", "Dec 16, 2000"]
 			]
-		    }
-		]
-	    },
-	    {
-		"style": ["Short", "Medium"],
-		"value": [
+		    },
 		    {
 		        "epoch": 19012153,
 			"output": [
 			    ["en", "2/23/06, 9:13:00 PM"]
 			]
-		    }
-		]
-	    },
-	    {
-		"style": ["Medium", "Short"],
-		"value": [
+		    },
 		    {
 		        "epoch": 33102153,
 			"output": [
 			    ["en", "Dec 8, 2032, 2:33 PM"]
 			]
-		    }
-		]
-	    },
-	    {
-		"style": ["Short", "Short"],
-		"value": [
+		    },
 		    {
 		        "epoch": 39100853,
 			"output": [
 			    ["en", "5/5/44, 8:53 AM"]
 			]
-		    }
-		]
-	    },
-	    {
-		"style": ["Medium", "Medium"],
-		"value": [
+		    },
 		    {
 		        "epoch": 31923823,
 			"output": [
 			    ["en", "Sep 12, 2030, 7:43:00 AM"]
 			]
-		    }
-		]
-	    },
-	    {
-		"style": ["Long", "Medium"],
-		"value": [
+		    },
 		    {
 		        "epoch": 27114532,
 			"output": [
