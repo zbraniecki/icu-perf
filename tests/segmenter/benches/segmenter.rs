@@ -95,10 +95,15 @@ fn number(c: &mut Criterion) {
         let tests16: Vec<(&str, Vec<Vec<u16>>)> = tests
             .0
             .iter()
-            .map(|c| (
+            .map(|c| {
+                (
                     c.langid,
-                    c.values.iter().map(|v| v.input.encode_utf16().collect()).collect()
-            ))
+                    c.values
+                        .iter()
+                        .map(|v| v.input.encode_utf16().collect())
+                        .collect(),
+                )
+            })
             .collect();
 
         c.bench_function("icu4c/static/segmenter/utf16/word/overview", |b| {
