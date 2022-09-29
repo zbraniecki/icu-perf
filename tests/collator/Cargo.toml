@@ -31,3 +31,7 @@ icu4c = ["libc"]
 [[bench]]
 name = "collator"
 harness = false
+
+[[example]]
+name = "minimal"
+required-features = ["icu4x-static"]
