@@ -23,15 +23,15 @@ fn datetime(c: &mut Criterion) {
 
         c.bench_function("icu4x/static/datetime/datetime/overview", |b| {
             b.iter(|| {
-                let provider = icu4x::DateTimeFormatter::get_static_provider();
                 for test in tests.0.iter() {
+                    let provider = icu4x::DateTimeFormatter::get_static_provider();
                     for lid in test.langid.iter() {
                         let langid: LanguageIdentifier = lid.parse().unwrap();
                         for case in test.cases.iter() {
                             let dtf = icu4x::DateTimeFormatter::new_static(&provider, &langid, case.style.0, case.style.1);
-                            // for value in case.value.iter() {
-                            //     let _ = dtf.format(black_box(value.epoch));
-                            // }
+                            for value in case.value.iter() {
+                                let _ = dtf.format(black_box(value.epoch));
+                            }
                         }
                     }
                 }
@@ -45,8 +45,8 @@ fn datetime(c: &mut Criterion) {
 
         c.bench_function("icu4x/baked/datetime/datetime/overview", |b| {
             b.iter(|| {
-                let provider = icu4x::DateTimeFormatter::get_baked_provider();
                 for test in tests.0.iter() {
+                    let provider = icu4x::DateTimeFormatter::get_baked_provider();
                     for lid in test.langid.iter() {
                         let langid: LanguageIdentifier = lid.parse().unwrap();
                         for case in test.cases.iter() {

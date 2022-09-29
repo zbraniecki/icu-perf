@@ -21,8 +21,8 @@ fn number(c: &mut Criterion) {
     {
         c.bench_function("icu4x/static/collator/compare", |b| {
             b.iter(|| {
-                let provider = icu4x::Collator::get_static_provider();
                 for test in &tests.0 {
+                    let provider = icu4x::Collator::get_static_provider();
                     for lid in test.langids.iter() {
                         let langid: icu_locid::LanguageIdentifier = lid.parse().unwrap();
                         for case in test.cases.iter() {
@@ -41,8 +41,8 @@ fn number(c: &mut Criterion) {
     {
         c.bench_function("icu4x/baked/collator/compare", |b| {
             b.iter(|| {
-                let provider = icu4x::Collator::get_baked_provider();
                 for test in &tests.0 {
+                    let provider = icu4x::Collator::get_baked_provider();
                     for lid in test.langids.iter() {
                         let langid: icu_locid::LanguageIdentifier = lid.parse().unwrap();
                         for case in test.cases.iter() {

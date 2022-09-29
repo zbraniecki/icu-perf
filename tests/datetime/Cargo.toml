@@ -49,6 +49,10 @@ name = "icu4x-static"
 required-features = ["icu4x-static"]
 
 [[example]]
+name = "minimal"
+required-features = ["icu4x-static"]
+
+[[example]]
 name = "icu4x-baked"
 required-features = ["icu4x-baked"]
 

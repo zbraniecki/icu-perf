@@ -1,0 +1,57 @@
+[
+    {
+	"langid": ["en", "de", "ar", "el", "sl", "fr", "ru", "no", "pt", "ast"],
+	"values": [
+	    {
+	        "input": 27832853,
+		"output": [
+		]
+	    },
+	    {
+	        "input": 1,
+		"output": [
+		]
+	    },
+	    {
+	        "input": -314,
+		"output": [
+		]
+	    },
+	    {
+	        "input": 0.231,
+		"output": [
+		]
+	    },
+	    {
+	        "input": 2022,
+		"output": [
+		]
+	    },
+	    {
+	        "input": 1401029121,
+		"output": [
+		]
+	    },
+	    {
+	        "input": -9992329.585,
+		"output": [
+		]
+	    },
+	    {
+	        "input": -12.21,
+		"output": [
+		]
+	    },
+	    {
+	        "input": 0,
+		"output": [
+		]
+	    },
+	    {
+	        "input": -5,
+		"output": [
+		]
+	    }
+	]
+    }
+]

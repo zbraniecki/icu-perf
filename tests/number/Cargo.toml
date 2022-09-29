@@ -32,3 +32,7 @@ icu4c = ["libc"]
 [[bench]]
 name = "number"
 harness = false
+
+[[example]]
+name = "minimal"
+required-features = ["icu4x-static"]
