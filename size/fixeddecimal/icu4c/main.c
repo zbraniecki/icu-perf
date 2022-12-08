@@ -3,6 +3,7 @@
 // (online at: https://github.com/unicode-org/icu4x/blob/main/LICENSE ).
 
 #include "unicode/unumberformatter.h"
+#include "unicode/usimplenumberformatter.h"
 #include "unicode/uformattedvalue.h"
 #include "unicode/utypes.h"
 #include "unicode/uclean.h"
@@ -19,7 +20,8 @@ int main(int argc, char *argv[]) {
         return status;
     }
 
-    UNumberFormatter* unumf = unumf_openForSkeletonAndLocale(u"", 0, "bn", &status);
+    // UNumberFormatter* unumf = unumf_openForSkeletonAndLocale(u"", 0, "bn", &status);
+    USimpleNumberFormatter* unumf = usnumf_openForLocale("bn", &status);
     if (!U_SUCCESS(status))  {
         printf("Failed to create UNumberFormatter\n");
         return status;
@@ -31,7 +33,8 @@ int main(int argc, char *argv[]) {
         return status;
     }
 
-    unumf_formatInt(unumf, 1000007, result, &status);
+    // unumf_formatInt(unumf, 1000007, result, &status);
+    usnumf_formatInt64(unumf, 1000007, result, &status);
     if (!U_SUCCESS(status))  {
         printf("Failed to format number\n");
         return status;
@@ -54,7 +57,8 @@ int main(int argc, char *argv[]) {
 
     printf("Output is %s\n", result_utf8);
 
-    unumf_close(unumf);
+    // unumf_close(unumf);
+    usnumf_close(unumf);
     unumf_closeResult(result);
 
     return 0;
