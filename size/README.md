@@ -34,9 +34,10 @@ cd icu-perf/size/fixeddecimal/icu4c
 make
 ````
 
-This produces 4 files:
+This produces 8 files:
 
 - `debug.elf` is a statically linked, runnable executable with debug symbols
 - `strip.elf` is a statically linked, runnable executable with debug symbol names removed for a smaller size (but almost impossible to debug or analyze)
 - `stub_debug.elf` is a statically linked executable with the ICU stubdata; it doesn't run, but it lets you see the code size without data size
 - `stub_strip.elf` is like `stub_debug.elf` but with symbol names removed (this is the smallest of the four files)
+- `dynstd_*` is the same as the above, except that the system libraries like libc, libm, and libpthread are dynamically linked. This produces less noise in the binary file. Note that ICU4X is no_std, so the fully statically linked binary is in some sense a fairer comparison.

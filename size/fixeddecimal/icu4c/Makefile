@@ -55,7 +55,66 @@ stub_strip.elf: main.c
 		-Wl,--gc-sections \
 		-Wl,--strip-all
 
-ALL_ELF=debug.elf strip.elf stub_debug.elf stub_strip.elf
+dynstd_debug.elf: main.c
+	$(CLANG) main.c -o $@ \
+		-flto=thin -fuse-ld=$(LLD) \
+		-stdlib=libc++ \
+		-Wl,-Bstatic \
+		-licui18n -licuuc -licudata \
+		-Wl,-Bdynamic \
+		-lstdc++ -lm -ldl -lpthread \
+		-I$(ICU4C_INCLUDE) \
+		-L$(ICU4C_LIB) \
+		-Wl,--gc-sections
+
+dynstd_strip.elf: main.c
+	$(CLANG) main.c -o $@ \
+		-flto=thin -fuse-ld=$(LLD) \
+		-stdlib=libc++ \
+		-Wl,-Bstatic \
+		-licui18n -licuuc -licudata \
+		-Wl,-Bdynamic \
+		-lstdc++ -lm -ldl -lpthread \
+		-I$(ICU4C_INCLUDE) \
+		-L$(ICU4C_LIB) \
+		-Wl,--gc-sections \
+		-Wl,--strip-all
+
+dynstd_stub_debug.elf: main.c
+	$(CLANG) main.c -o $@ \
+		-flto=thin -fuse-ld=$(LLD) \
+		-stdlib=libc++ \
+		-Wl,-Bstatic \
+		-licui18n -licuuc -licudata \
+		-Wl,-Bdynamic \
+		-lstdc++ -lm -ldl -lpthread \
+		-I$(ICU4C_INCLUDE) \
+		-L$(ICU4C_STUBDATA_LIB) \
+		-L$(ICU4C_LIB) \
+		-Wl,--gc-sections
+
+dynstd_stub_strip.elf: main.c
+	$(CLANG) main.c -o $@ \
+		-flto=thin -fuse-ld=$(LLD) \
+		-stdlib=libc++ \
+		-Wl,-Bstatic \
+		-licui18n -licuuc -licudata \
+		-Wl,-Bdynamic \
+		-lstdc++ -lm -ldl -lpthread \
+		-I$(ICU4C_INCLUDE) \
+		-L$(ICU4C_STUBDATA_LIB) \
+		-L$(ICU4C_LIB) \
+		-Wl,--gc-sections \
+		-Wl,--strip-all
+
+ALL_ELF=debug.elf \
+	strip.elf \
+	stub_debug.elf \
+	stub_strip.elf \
+	dynstd_debug.elf \
+	dynstd_strip.elf \
+	dynstd_stub_debug.elf \
+	dynstd_stub_strip.elf
 
 build: $(ALL_ELF)
 
