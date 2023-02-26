@@ -57,7 +57,7 @@
 			"left": "wezuwiusz",
 			"right": "wezuwiusz",
 			"output": [
-			    ["und", "Greater"]
+			    ["und", "Equal"]
 			]
 		    },
 		    {
@@ -92,14 +92,14 @@
 			"left": "pêche",
 			"right": "péché",
 			"output": [
-			    ["und", "Less"]
+			    ["und", "Greater"]
 			]
 		    },
 		    {
 			"left": "dâtabase",
 			"right": "data",
 			"output": [
-			    ["und", "Less"]
+			    ["und", "Greater"]
 			]
 		    },
 		    {
@@ -113,7 +113,7 @@
 			"left": "database",
 			"right": "database",
 			"output": [
-			    ["und", "Less"]
+			    ["und", "Equal"]
 			]
 		    }
 		]

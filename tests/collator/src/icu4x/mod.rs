@@ -4,11 +4,11 @@ use std::cmp::Ordering;
 pub mod data {
     include!(concat!(
         env!("CARGO_MANIFEST_DIR"),
-        "/../../data/icu4x-1.0.rs/mod.rs"
+        "/../../data/icu4x-1.2.rs/mod.rs"
     ));
     include!(concat!(
         env!("CARGO_MANIFEST_DIR"),
-        "/../../data/icu4x-1.0.rs/any.rs"
+        "/../../data/icu4x-1.2.rs/any.rs"
     ));
 }
 
@@ -18,7 +18,7 @@ use icu_provider_blob::BlobDataProvider;
 #[cfg(feature = "icu4x-static")]
 const ICU4X_DATA: &[u8] = include_bytes!(concat!(
     env!("CARGO_MANIFEST_DIR"),
-    "/../../data/icu4x-1.0.postcard"
+    "/../../data/icu4x-1.2.postcard"
 ));
 
 pub struct Collator {

@@ -19,6 +19,7 @@ fn test_data() {
 
     #[cfg(feature = "icu4x-baked")]
     {
+        use icu_decimal::options::{FixedDecimalFormatterOptions, GroupingStrategy};
         use icu_locid::LanguageIdentifier;
         use icu_perf_test_number::icu4x;
 
@@ -26,11 +27,15 @@ fn test_data() {
         for test in tests.0.iter() {
             for lid in test.langid.iter() {
                 let langid: LanguageIdentifier = lid.parse().unwrap();
-                let nf = icu4x::NumberFormatter::new_baked(&provider, &langid);
-                for case in test.values.iter() {
-                    let result = nf.format(case.input);
-                    if let Some(expected) = get_expected(lid, &case.output) {
-                        assert_eq!(result, expected);
+                for case in test.cases.iter() {
+                    let mut options: FixedDecimalFormatterOptions = Default::default();
+                    options.grouping_strategy = GroupingStrategy::Auto;
+                    let nf = icu4x::NumberFormatter::new_baked(&provider, &langid, options);
+                    for value in case.values.iter() {
+                        let result = nf.format(value.input);
+                        if let Some(expected) = get_expected(lid, &value.output) {
+                            assert_eq!(result, expected);
+                        }
                     }
                 }
             }

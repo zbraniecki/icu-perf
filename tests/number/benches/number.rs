@@ -20,6 +20,7 @@ fn number(c: &mut Criterion) {
     #[cfg(feature = "icu4x-static")]
     {
         use icu_locid::LanguageIdentifier;
+        use icu_decimal::options::{FixedDecimalFormatterOptions, GroupingStrategy};
 
         c.bench_function("icu4x/static/number/number/format", |b| {
             b.iter(|| {
@@ -28,7 +29,9 @@ fn number(c: &mut Criterion) {
                     for lid in test.langid.iter() {
                         let langid: LanguageIdentifier = lid.parse().unwrap();
                         for case in test.cases.iter() {
-                            let nf = icu4x::NumberFormatter::new_static(&provider, &langid);
+                            let mut options: FixedDecimalFormatterOptions = Default::default();
+                            options.grouping_strategy = GroupingStrategy::Auto;
+                            let nf = icu4x::NumberFormatter::new_static(&provider, &langid, options);
                             for value in case.values.iter() {
                                 let _ = nf.format(black_box(value.input));
                             }
@@ -42,6 +45,7 @@ fn number(c: &mut Criterion) {
     #[cfg(feature = "icu4x-baked")]
     {
         use icu_locid::LanguageIdentifier;
+        use icu_decimal::options::{FixedDecimalFormatterOptions, GroupingStrategy};
 
         c.bench_function("icu4x/baked/number/number/format", |b| {
             b.iter(|| {
@@ -50,7 +54,9 @@ fn number(c: &mut Criterion) {
                     for lid in test.langid.iter() {
                         let langid: LanguageIdentifier = lid.parse().unwrap();
                         for case in test.cases.iter() {
-                            let nf = icu4x::NumberFormatter::new_baked(&provider, &langid);
+                            let mut options: FixedDecimalFormatterOptions = Default::default();
+                            options.grouping_strategy = GroupingStrategy::Auto;
+                            let nf = icu4x::NumberFormatter::new_baked(&provider, &langid, options);
                             for value in case.values.iter() {
                                 let _ = nf.format(black_box(value.input));
                             }

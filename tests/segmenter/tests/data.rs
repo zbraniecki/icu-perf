@@ -13,15 +13,21 @@ fn test_data_icu4x() {
     let provider = icu4x::WordSegmenter::get_static_provider();
 
     for case in tests.0.iter() {
-        let seg = icu4x::LineSegmenter::new_static(&provider);
-        let iterator = seg.segment(case.input);
-        let result: Vec<_> = iterator.collect();
-        assert_eq!(result, case.output.line.to_vec());
+        for value in case.values.iter() {
+            let seg = icu4x::LineSegmenter::new_static(&provider);
+            let iterator = seg.segment(value.input);
+            let result: Vec<_> = iterator.collect();
+            if !value.output.line.is_empty() {
+                assert_eq!(result, value.output.line.to_vec());
+            }
 
-        let seg = icu4x::WordSegmenter::new_static(&provider);
-        let iterator = seg.segment(case.input);
-        let result: Vec<_> = iterator.collect();
-        assert_eq!(result, case.output.word.to_vec());
+            let seg = icu4x::WordSegmenter::new_static(&provider);
+            let iterator = seg.segment(value.input);
+            let result: Vec<_> = iterator.collect();
+            if !value.output.word.is_empty() {
+                assert_eq!(result, value.output.word.to_vec());
+            }
+        }
     }
 }
 
@@ -32,20 +38,22 @@ fn test_data_icu4c() {
     use icu_perf_test_segmenter::icu4c;
 
     for case in tests.0.iter() {
-        let seg = icu4c::Segmenter::new(case.langid, case.input, false);
-        let result: Vec<_> = seg.map(|i| i as usize).collect();
-        if let Some(o) = &case.output.icu4c {
-            assert_eq!(result, o.line.to_vec());
-        } else {
-            assert_eq!(result, case.output.line.to_vec());
-        }
+        for value in case.values.iter() {
+            let seg = icu4c::Segmenter::new(case.langid, value.input, false);
+            let result: Vec<_> = seg.map(|i| i as usize).collect();
+            if let Some(o) = &value.output.icu4c {
+                assert_eq!(result, o.line.to_vec());
+            } else if !value.output.line.is_empty() {
+                assert_eq!(result, value.output.line.to_vec());
+            }
 
-        let seg = icu4c::Segmenter::new(case.langid, case.input, true);
-        let result: Vec<_> = seg.map(|i| i as usize).collect();
-        if let Some(o) = &case.output.icu4c {
-            assert_eq!(result, o.word.to_vec());
-        } else {
-            assert_eq!(result, case.output.word.to_vec());
+            let seg = icu4c::Segmenter::new(case.langid, value.input, true);
+            let result: Vec<_> = seg.map(|i| i as usize).collect();
+            if let Some(o) = &value.output.icu4c {
+                assert_eq!(result, o.word.to_vec());
+            } else if !value.output.word.is_empty() {
+                assert_eq!(result, value.output.word.to_vec());
+            }
         }
     }
 }

@@ -62,7 +62,8 @@ fn test_data_icu4c() {
                 for value in case.value.iter() {
                     let result = dtf.format(value.epoch);
                     if let Some(expected) = get_expected(lid, &value.output) {
-                        assert_eq!(result, expected);
+                        let v = value.output.get(0).unwrap();
+                        assert_eq!(result, expected, "{}, {}", v.0, v.1);
                     }
                 }
             }

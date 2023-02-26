@@ -1,0 +1,1 @@
+:: icu::calendar :: provider :: WeekDataV1 { first_weekday : :: icu::calendar :: types :: IsoWeekday :: Monday , min_week_days : 1u8 , }

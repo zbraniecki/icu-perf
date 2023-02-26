@@ -2,11 +2,11 @@
 pub mod data {
     include!(concat!(
         env!("CARGO_MANIFEST_DIR"),
-        "/src/icu4x/data/mod.rs"
+        "/../../data/icu4x-1.2.rs/mod.rs"
     ));
     include!(concat!(
         env!("CARGO_MANIFEST_DIR"),
-        "/src/icu4x/data/any.rs"
+        "/../../data/icu4x-1.2.rs/any.rs"
     ));
 }
 
@@ -20,7 +20,7 @@ use icu_provider_blob::BlobDataProvider;
 #[cfg(feature = "icu4x-static")]
 const ICU4X_DATA: &[u8] = include_bytes!(concat!(
     env!("CARGO_MANIFEST_DIR"),
-    "/../../data/icu4x-1.0.postcard"
+    "/../../data/icu4x-1.2.postcard"
 ));
 
 fn get_date_length(input: &str) -> Option<length::Date> {

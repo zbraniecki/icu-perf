@@ -1,14 +1,15 @@
 use fixed_decimal::{DoublePrecision, FixedDecimal};
+use icu_decimal::options::FixedDecimalFormatterOptions;
 
 #[cfg(feature = "icu4x-baked")]
 pub mod data {
     include!(concat!(
         env!("CARGO_MANIFEST_DIR"),
-        "/src/icu4x/data/mod.rs"
+        "/../../data/icu4x-1.2.rs/mod.rs"
     ));
     include!(concat!(
         env!("CARGO_MANIFEST_DIR"),
-        "/src/icu4x/data/any.rs"
+        "/../../data/icu4x-1.2.rs/any.rs"
     ));
 }
 
@@ -18,7 +19,7 @@ use icu_provider_blob::BlobDataProvider;
 #[cfg(feature = "icu4x-static")]
 const ICU4X_DATA: &[u8] = include_bytes!(concat!(
     env!("CARGO_MANIFEST_DIR"),
-    "/../../data/icu4x-1.0.postcard"
+    "/../../data/icu4x-1.2.postcard"
 ));
 
 pub struct NumberFormatter {
@@ -37,11 +38,11 @@ impl NumberFormatter {
     }
 
     #[cfg(feature = "icu4x-static")]
-    pub fn new_static(provider: &BlobDataProvider, langid: &icu_locid::LanguageIdentifier) -> Self {
+    pub fn new_static(provider: &BlobDataProvider, langid: &icu_locid::LanguageIdentifier, options: FixedDecimalFormatterOptions) -> Self {
         let ptr = icu_decimal::FixedDecimalFormatter::try_new_with_buffer_provider(
             provider,
             &langid.into(),
-            Default::default(),
+            options,
         )
         .unwrap();
         Self { ptr }
@@ -51,11 +52,12 @@ impl NumberFormatter {
     pub fn new_baked(
         provider: &data::BakedDataProvider,
         langid: &icu_locid::LanguageIdentifier,
+        options: FixedDecimalFormatterOptions,
     ) -> Self {
         let ptr = icu_decimal::FixedDecimalFormatter::try_new_with_any_provider(
             provider,
             &langid.into(),
-            Default::default(),
+            options,
         )
         .unwrap();
         Self { ptr }

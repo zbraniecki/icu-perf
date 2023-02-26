@@ -40,7 +40,7 @@ fn test_data_icu4x() {
                 for value in case.values.iter() {
                     let result = col.compare(value.left, value.right);
                     if let Some(expected) = get_expected(lid, &value.output) {
-                        assert_eq!(result, get_output_value(expected));
+                        assert_eq!(result, get_output_value(expected), "{}-{}", value.left, value.right);
                     }
                 }
             }
@@ -61,7 +61,7 @@ fn test_data_icu4c() {
                 for value in case.values.iter() {
                     let result = col.compare(value.left, value.right);
                     if let Some(expected) = get_expected(lid, &value.output) {
-                        assert_eq!(result, get_output_value(expected));
+                        assert_eq!(result, get_output_value(expected), "{}-{}", value.left, value.right);
                     }
                 }
             }
