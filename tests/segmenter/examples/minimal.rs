@@ -9,4 +9,8 @@ fn main() {
     let provider = icu4x::LineSegmenter::get_static_provider();
     let seg = icu4x::LineSegmenter::new_static(&provider);
     let _: Vec<_> = seg.segment(value).collect();
+
+    let provider = icu4x::GraphemeClusterSegmenter::get_static_provider();
+    let seg = icu4x::GraphemeClusterSegmenter::new_static(&provider);
+    let _: Vec<_> = seg.segment(value).collect();
 }
