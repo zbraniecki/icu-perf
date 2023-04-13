@@ -5,7 +5,7 @@ edition = "2021"
 links = "icuuc"
 
 [dependencies]
-icu_segmenter = { path = "../../../icu4x/experimental/segmenter", features = ["serde"], optional = true }
+icu_segmenter = { path = "../../../icu4x/components/segmenter", features = ["serde", "lstm"], optional = true }
 icu_locid = { path = "../../../icu4x/components/locid", optional = true }
 icu_provider_blob = { path = "../../../icu4x/provider/blob", optional = true }
 icu_provider = { path = "../../../icu4x/provider/core", optional = true }

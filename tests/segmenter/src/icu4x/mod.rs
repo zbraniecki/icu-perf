@@ -117,3 +117,36 @@ impl GraphemeClusterSegmenter {
         self.ptr.segment_str(input)
     }
 }
+
+pub struct LstmSegmenter {
+    ptr: icu_segmenter::LineSegmenter,
+}
+
+impl LstmSegmenter {
+    #[cfg(feature = "icu4x-static")]
+    pub fn get_static_provider() -> BlobDataProvider {
+        BlobDataProvider::try_new_from_static_blob(&ICU4X_DATA).expect("Failed to load data")
+    }
+
+    #[cfg(feature = "icu4x-baked")]
+    pub fn get_baked_provider() -> data::BakedDataProvider {
+        data::BakedDataProvider
+    }
+
+    #[cfg(feature = "icu4x-static")]
+    pub fn new_static(provider: &BlobDataProvider) -> Self {
+        let ptr =
+            icu_segmenter::LineSegmenter::try_new_lstm_with_buffer_provider(provider).unwrap();
+        Self { ptr }
+    }
+
+    #[cfg(feature = "icu4x-baked")]
+    pub fn new_baked(provider: &data::BakedDataProvider) -> Self {
+        let ptr = icu_segmenter::LineSegmenter::try_new_lstm_with_any_provider(provider).unwrap();
+        Self { ptr }
+    }
+
+    pub fn segment<'a>(&'a self, input: &'a str) -> impl Iterator<Item = usize> + 'a {
+        self.ptr.segment_str(input)
+    }
+}
