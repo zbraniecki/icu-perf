@@ -5,6 +5,6 @@ fn main() {
     let value = 27832853.0;
     let langid = langid!("en");
     let provider = icu4x::PluralRules::get_static_provider();
-    let nf = icu4x::PluralRules::new_static(&provider, &langid);
+    let nf = icu4x::PluralRules::new_static(&provider, &langid, true);
     let _ = nf.select(value);
 }

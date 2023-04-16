@@ -20,7 +20,7 @@ fn main() {
         #[cfg(feature = "icu4x-static")]
         {
             let provider = icu4x::WordSegmenter::get_static_provider();
-            let seg = icu4x::WordSegmenter::new_static(&provider);
+            let seg = icu4x::WordSegmenter::new_auto_static(&provider);
             let result: Vec<_> = seg.segment(value).collect();
             println!("ICU4X (static): {:?}", result);
         }
@@ -28,7 +28,7 @@ fn main() {
         #[cfg(feature = "icu4x-baked")]
         {
             let provider = icu4x::WordSegmenter::get_baked_provider();
-            let seg = icu4x::WordSegmenter::new_baked(&provider);
+            let seg = icu4x::WordSegmenter::new_auto_baked(&provider);
             let result: Vec<_> = seg.segment(value).collect();
             println!("ICU4X (baked): {:?}", result);
         }

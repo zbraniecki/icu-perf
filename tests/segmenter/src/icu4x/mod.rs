@@ -35,15 +35,53 @@ impl LineSegmenter {
     }
 
     #[cfg(feature = "icu4x-static")]
-    pub fn new_static(provider: &BlobDataProvider) -> Self {
+    pub fn new_auto_static(provider: &BlobDataProvider, ja_zh: bool) -> Self {
+        let mut options = icu_segmenter::LineBreakOptions::default();
+        options.ja_zh = ja_zh;
         let ptr =
-            icu_segmenter::LineSegmenter::try_new_auto_with_buffer_provider(provider).unwrap();
+            icu_segmenter::LineSegmenter::try_new_auto_with_options_with_buffer_provider(provider, options).unwrap();
         Self { ptr }
     }
 
     #[cfg(feature = "icu4x-baked")]
-    pub fn new_baked(provider: &data::BakedDataProvider) -> Self {
-        let ptr = icu_segmenter::LineSegmenter::try_new_auto_with_any_provider(provider).unwrap();
+    pub fn new_auto_baked(provider: &data::BakedDataProvider, ja_zh: bool) -> Self {
+        let mut options = icu_segmenter::LineBreakOptions::default();
+        options.ja_zh = ja_zh;
+        let ptr = icu_segmenter::LineSegmenter::try_new_auto_with_options_with_any_provider(provider, options).unwrap();
+        Self { ptr }
+    }
+
+    #[cfg(feature = "icu4x-static")]
+    pub fn new_dictionary_static(provider: &BlobDataProvider, ja_zh: bool) -> Self {
+        let mut options = icu_segmenter::LineBreakOptions::default();
+        options.ja_zh = ja_zh;
+        let ptr =
+            icu_segmenter::LineSegmenter::try_new_dictionary_with_options_with_buffer_provider(provider, options).unwrap();
+        Self { ptr }
+    }
+
+    #[cfg(feature = "icu4x-baked")]
+    pub fn new_dictionary_baked(provider: &data::BakedDataProvider, ja_zh: bool) -> Self {
+        let mut options = icu_segmenter::LineBreakOptions::default();
+        options.ja_zh = ja_zh;
+        let ptr = icu_segmenter::LineSegmenter::try_new_dictionary_with_options_with_any_provider(provider, options).unwrap();
+        Self { ptr }
+    }
+
+    #[cfg(feature = "icu4x-static")]
+    pub fn new_lstm_static(provider: &BlobDataProvider, ja_zh: bool) -> Self {
+        let mut options = icu_segmenter::LineBreakOptions::default();
+        options.ja_zh = ja_zh;
+        let ptr =
+            icu_segmenter::LineSegmenter::try_new_lstm_with_options_with_buffer_provider(provider, options).unwrap();
+        Self { ptr }
+    }
+
+    #[cfg(feature = "icu4x-baked")]
+    pub fn new_lstm_baked(provider: &data::BakedDataProvider, ja_zh: bool) -> Self {
+        let mut options = icu_segmenter::LineBreakOptions::default();
+        options.ja_zh = ja_zh;
+        let ptr = icu_segmenter::LineSegmenter::try_new_lstm_with_options_with_any_provider(provider, options).unwrap();
         Self { ptr }
     }
 
@@ -68,15 +106,41 @@ impl WordSegmenter {
     }
 
     #[cfg(feature = "icu4x-static")]
-    pub fn new_static(provider: &BlobDataProvider) -> Self {
+    pub fn new_auto_static(provider: &BlobDataProvider) -> Self {
         let ptr =
             icu_segmenter::WordSegmenter::try_new_auto_with_buffer_provider(provider).unwrap();
         Self { ptr }
     }
 
     #[cfg(feature = "icu4x-baked")]
-    pub fn new_baked(provider: &data::BakedDataProvider) -> Self {
+    pub fn new_auto_baked(provider: &data::BakedDataProvider) -> Self {
         let ptr = icu_segmenter::WordSegmenter::try_new_auto_with_any_provider(provider).unwrap();
+        Self { ptr }
+    }
+
+    #[cfg(feature = "icu4x-static")]
+    pub fn new_dictionary_static(provider: &BlobDataProvider) -> Self {
+        let ptr =
+            icu_segmenter::WordSegmenter::try_new_dictionary_with_buffer_provider(provider).unwrap();
+        Self { ptr }
+    }
+
+    #[cfg(feature = "icu4x-baked")]
+    pub fn new_dictionary_baked(provider: &data::BakedDataProvider) -> Self {
+        let ptr = icu_segmenter::WordSegmenter::try_new_dictionary_with_any_provider(provider).unwrap();
+        Self { ptr }
+    }
+
+    #[cfg(feature = "icu4x-static")]
+    pub fn new_lstm_static(provider: &BlobDataProvider) -> Self {
+        let ptr =
+            icu_segmenter::WordSegmenter::try_new_lstm_with_buffer_provider(provider).unwrap();
+        Self { ptr }
+    }
+
+    #[cfg(feature = "icu4x-baked")]
+    pub fn new_lstm_baked(provider: &data::BakedDataProvider) -> Self {
+        let ptr = icu_segmenter::WordSegmenter::try_new_lstm_with_any_provider(provider).unwrap();
         Self { ptr }
     }
 
@@ -110,39 +174,6 @@ impl GraphemeClusterSegmenter {
     #[cfg(feature = "icu4x-baked")]
     pub fn new_baked(provider: &data::BakedDataProvider) -> Self {
         let ptr = icu_segmenter::GraphemeClusterSegmenter::try_new_with_any_provider(provider).unwrap();
-        Self { ptr }
-    }
-
-    pub fn segment<'a>(&'a self, input: &'a str) -> impl Iterator<Item = usize> + 'a {
-        self.ptr.segment_str(input)
-    }
-}
-
-pub struct LstmSegmenter {
-    ptr: icu_segmenter::LineSegmenter,
-}
-
-impl LstmSegmenter {
-    #[cfg(feature = "icu4x-static")]
-    pub fn get_static_provider() -> BlobDataProvider {
-        BlobDataProvider::try_new_from_static_blob(&ICU4X_DATA).expect("Failed to load data")
-    }
-
-    #[cfg(feature = "icu4x-baked")]
-    pub fn get_baked_provider() -> data::BakedDataProvider {
-        data::BakedDataProvider
-    }
-
-    #[cfg(feature = "icu4x-static")]
-    pub fn new_static(provider: &BlobDataProvider) -> Self {
-        let ptr =
-            icu_segmenter::LineSegmenter::try_new_lstm_with_buffer_provider(provider).unwrap();
-        Self { ptr }
-    }
-
-    #[cfg(feature = "icu4x-baked")]
-    pub fn new_baked(provider: &data::BakedDataProvider) -> Self {
-        let ptr = icu_segmenter::LineSegmenter::try_new_lstm_with_any_provider(provider).unwrap();
         Self { ptr }
     }
 

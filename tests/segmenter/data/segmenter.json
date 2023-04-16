@@ -1,50 +1,121 @@
 [
-    {
-	"langid": "und",
-	"values": [
-	    {
-		"input": "Hello World",
-		"output": {
-		    "line": [6, 11],
-		    "word": [0, 5, 6, 11],
-		    "icu4c": {
-			"line": [6, 11],
-			"word": [5, 6, 11]
-		    }
-		}
-	    },
-	    {
-		"input": "Unter anderem war die Tatwaffe, eine Luger-Pistole, am Tag nach dem Mord in die Hände des Verfassungsschutzes gelangt, wo sie anschließend für 15 Jahre in einem Tresor versteckt und dies absichtlich vor den Strafverfolgungsbehörden verheimlicht wurde.",
-		"output": {
-		    "line": [6, 14, 18, 22, 32, 37, 43, 52, 55, 59, 64, 68, 73, 76, 80, 87, 91, 111, 120, 123, 127, 141, 146, 149, 155, 158, 164, 171, 181, 185, 190, 202, 206, 210, 236, 249, 255],
-		    "word": [0, 5, 6, 13, 14, 17, 18, 21, 22, 30, 31, 32, 36, 37, 42, 43, 50, 51, 52, 54, 55, 58, 59, 63, 64, 67, 68, 72, 73, 75, 76, 79, 80, 86, 87, 90, 91, 110, 111, 118, 119, 120, 122, 123, 126, 127, 140, 141, 145, 146, 148, 149, 154, 155, 157, 158, 163, 164, 170, 171, 180, 181, 184, 185, 189, 190, 201, 202, 205, 206, 209, 210, 235, 236, 248, 249, 254, 255],
-		    "icu4c": {
-			    "line": [6, 14, 18, 22, 32, 37, 43, 52, 55, 59, 64, 68, 73, 76, 80, 86, 90, 110, 119, 122, 126, 139, 143, 146, 152, 155, 161, 168, 178, 182, 187, 199, 203, 207, 232, 245, 251],
-			    "word": [5, 6, 13, 14, 17, 18, 21, 22, 30, 31, 32, 36, 37, 42, 43, 50, 51, 52, 54, 55, 58, 59, 63, 64, 67, 68, 72, 73, 75, 76, 79, 80, 85, 86, 89, 90, 109, 110, 117, 118, 119, 121, 122, 125, 126, 138, 139, 142, 143, 145, 146, 151, 152, 154, 155, 160, 161, 167, 168, 177, 178, 181, 182, 186, 187, 198, 199, 202, 203, 206, 207, 231, 232, 244, 245, 250, 251]
-		    }
-		}
-	    },
-	    {
-		"input": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non hendrerit odio. Curabitur hendrerit ligula arcu, ac venenatis dui placerat in. Nullam vel ultricies tellus. Vivamus arcu nunc, tincidunt vel est quis, interdum ultricies velit. Sed ac diam mi. Sed tellus lacus, pharetra id hendrerit a, tristique eget justo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis ac nulla id tortor consectetur tincidunt. Etiam tristique ornare tincidunt. Maecenas porta massa eleifend bibendum imperdiet. Donec nunc dolor, porttitor porttitor laoreet eu, dignissim nec sapien. Sed tellus velit, eleifend id urna id, suscipit porta nunc. Duis augue ex, mattis id molestie ac, rutrum ac felis. Fusce commodo vel velit nec pulvinar. Vivamus vehicula rutrum laoreet. Praesent tempor facilisis neque, vitae rhoncus libero tempus non. Quisque quis feugiat dolor, ac ultricies ipsum. Aenean commodo ac elit id laoreet. Phasellus et posuere ante. Duis at tellus tristique, lacinia justo vitae, faucibus est. Nunc efficitur lorem id mi dapibus, id dignissim nibh lobortis. Nullam ac enim mauris. Donec sed ex mi. Donec auctor sem eget nulla gravida viverra. Donec bibendum, quam ut auctor sollicitudin, dui nulla scelerisque nulla, at feugiat ante sem id ex. Etiam efficitur nisl vel dolor tincidunt, vitae hendrerit dui efficitur. Aenean sagittis, leo sed pulvinar imperdiet, magna dolor pharetra mi, ut posuere purus est vitae purus. Cras auctor tortor mi, quis volutpat justo porttitor vehicula.Maecenas eu vehicula erat. Donec dui augue, porta sit amet sollicitudin id, varius id sapien. Fusce eu magna mauris. Pellentesque malesuada iaculis risus sed pharetra. Nullam quis elementum dolor. Nam sagittis nunc eu purus ultrices, nec tempor tellus mattis. Donec tristique porta commodo. Vestibulum quis nisl laoreet, aliquam odio at, eleifend sem. Sed sed neque vulputate, consectetur velit vel, sollicitudin tellus. In hac habitasse platea dictumst. Ut ornare maximus enim vel blandit. Cras ac aliquam nulla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper, turpis et malesuada pulvinar, purus enim vulputate neque, eu posuere dui elit eu odio. Maecenas fermentum, risus et lobortis convallis, risus tortor sodales purus, ut dignissim lacus felis quis urna. Quisque sit amet mi sed est ornare bibendum vitae vitae ex. In tempor, felis in iaculis egestas, ex risus congue elit, at ullamcorper metus felis in mauris. Aliquam venenatis molestie mauris, in ultricies tortor. Phasellus consectetur tincidunt molestie. Aliquam quis blandit orci. Quisque nec nunc id dolor tincidunt tristique. Vestibulum odio diam, consectetur sit amet porttitor in, sodales nec tellus. Sed semper elit sit amet elit volutpat molestie. Quisque vitae pharetra ante. Mauris convallis tellus velit, volutpat facilisis felis volutpat a. Quisque tincidunt tellus elit, ac tincidunt est lacinia non. Integer blandit quam sed luctus pellentesque. Aenean quis auctor sem, non faucibus enim.Morbi condimentum, sem suscipit rhoncus tempor, tortor dolor bibendum mi, sit amet tempor nisi diam at purus. Nulla sagittis tincidunt enim, et ornare nibh euismod vel. Sed libero magna, dignissim ac lectus at, dignissim pellentesque est. Vivamus lobortis dictum risus vel laoreet. Etiam sit amet pretium felis. Cras convallis, eros iaculis sagittis semper, lectus orci auctor quam, ut vulputate dui mauris in nisl. Curabitur id consequat risus, eu lobortis erat. Sed imperdiet lectus eget pharetra dapibus. Sed lacinia sagittis nunc sit amet imperdiet. ",
-		"output": {
-		    "line": [],
-		    "word": []
-		}
-	    },
-	    {
-		"input": "The Truce of Calais was agreed by King Edward III of England and King Philip VI of France (depicted) on 28 September 1347. After ten years of war both countries were financially and militarily exhausted and Pope Clement VI brokered a truce, to run until 7 July 1348. The Black Death caused the truce to be renewed in 1348, 1349 and 1350. The truce effectively restricted fighting, but did not stop repeated naval clashes nor much fighting on a smaller scale. In 1351 the truce was renewed for one year but in January 1352 full-scale fighting broke out again. On 6 April 1354 a new truce and an outline of a permanent peace treaty were agreed as the Treaty of Guînes. However, King John II of France then decided on an ambitious series of offensives for the 1355 campaigning season and repudiated the treaty. Yet another extension to the Truce of Calais was agreed, until 24 June, when it finally expired. The war resumed in force in October 1355. (This article is part of a featured topic: Hundred Years' War, 1345–1347.)",
-		"output": {
-		    "line": [],
-		    "word": []
-		}
-	    },
-	    {
-		"input": "At the time of the union of East Jersey and West Jersey into the Province of New Jersey in 1702, there were about 24 townships; more were added under British government by letters patent, court decrees, or legislative action. Following the American Revolutionary War, the New Jersey Legislature confirmed all municipal charters, and granted new ones; by 1798, the state had 104 townships. Increased economic activity in Essex, Morris and Sussex counties, and the formation of Warren County, raised the number to 125 by 1834. Most of the townships had low taxes and little government; the roads (mostly of dirt) were maintained by farmers in lieu of taxes. Township meetings occurred each February; the citizens would discuss concerns, voluntarily seek solutions, and collectively appoint agents to carry out their will. Voters in each township elected members of the county governing body, the Board of Chosen Freeholders. The railroad brought major changes to New Jersey beginning in the mid-19th century. The state was mostly agricultural, and the new lines made it easier for farmers to get their crops to market. But they also made it easier for those employed in New York City or Philadelphia to live outside the urban core and yet commute to work each day. Even before the Civil War, the Brick Church station, in Orange, Essex County, about 15 miles (24 km) from New York City, became the center of the nation's first commuter suburb. New Jersey's townships acquired a new type of population, consisting of commuters, who formed communities near railroad stations, and who wanted good streets and roads, better funded schools, and a larger stake in the government. They were fiercely opposed on each issue by the existing rural, agricultural population, who understood that their taxes would need to be raised in order to pay for the services that they did not want. Schools and school districts caused angry debate between commuters and long-time residents. School district lines were independent of those of townships, for every school formed its own school district. Accordingly, townships could contain a number of school districts: Bergen County's Franklin Township in the early 1890s contained eleven school districts serving 774 students. Of the 94 schools in Bergen County in 1893, thirty-one were one-room schoolhouses, though this was a decrease from 44 in 1880. Bergen County was sparsely populated when the railroad lines went through in the 1850s, making for a different pattern of development than other suburban counties, such as Union and Camden, which saw more planned development around railroad stations. Bergen's pattern of development was unique in New Jersey, with, until 1894, several commuter suburbs in a single township, something rare elsewhere in the state. The town-meeting style of government then prescribed for townships proved ill-suited to those changing times. The New Jersey Constitution gave the state government in Trenton relatively weak powers over the townships, but from time to time the legislature attempted reform. The townships were divided into road districts, with residents appointed to see that maintenance was done; in 1859, the state allowed residents of each district to elect a road commissioner, who saw to it their road taxes were spent effectively.",
-		"output": {
-		    "line": [],
-		    "word": []
-		}
-	    }
-	]
-    }
+  {
+    "langid": "und",
+    "ja_zh": false,
+    "modes": [
+      "auto",
+      "dictionary",
+      "lstm"
+    ],
+    "values": [
+      {
+        "input": "Hello World",
+        "output": {
+          "line": [0, 6, 11],
+          "word": [0, 5, 6, 11],
+          "icu4c": {
+            "line": [6, 11],
+            "word": [5, 6, 11]
+          }
+        }
+      },
+      {
+        "input": "Unter anderem war die Tatwaffe, eine Luger-Pistole, am Tag nach dem Mord in die Hände des Verfassungsschutzes gelangt, wo sie anschließend für 15 Jahre in einem Tresor versteckt und dies absichtlich vor den Strafverfolgungsbehörden verheimlicht wurde.",
+        "output": {
+          "line": [0, 6, 14, 18, 22, 32, 37, 43, 52, 55, 59, 64, 68, 73, 76, 80, 87, 91, 111, 120, 123, 127, 141, 146, 149, 155, 158, 164, 171, 181, 185, 190, 202, 206, 210, 236, 249, 255],
+          "word": [0, 5, 6, 13, 14, 17, 18, 21, 22, 30, 31, 32, 36, 37, 42, 43, 50, 51, 52, 54, 55, 58, 59, 63, 64, 67, 68, 72, 73, 75, 76, 79, 80, 86, 87, 90, 91, 110, 111, 118, 119, 120, 122, 123, 126, 127, 140, 141, 145, 146, 148, 149, 154, 155, 157, 158, 163, 164, 170, 171, 180, 181, 184, 185, 189, 190, 201, 202, 205, 206, 209, 210, 235, 236, 248, 249, 254, 255],
+          "icu4c": {
+            "line": [6, 14, 18, 22, 32, 37, 43, 52, 55, 59, 64, 68, 73, 76, 80, 86, 90, 110, 119, 122, 126, 139, 143, 146, 152, 155, 161, 168, 178, 182, 187, 199, 203, 207, 232, 245, 251],
+            "word": [5, 6, 13, 14, 17, 18, 21, 22, 30, 31, 32, 36, 37, 42, 43, 50, 51, 52, 54, 55, 58, 59, 63, 64, 67, 68, 72, 73, 75, 76, 79, 80, 85, 86, 89, 90, 109, 110, 117, 118, 119, 121, 122, 125, 126, 138, 139, 142, 143, 145, 146, 151, 152, 154, 155, 160, 161, 167, 168, 177, 178, 181, 182, 186, 187, 198, 199, 202, 203, 206, 207, 231, 232, 244, 245, 250, 251]
+          }
+        }
+      },
+      {
+        "input": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non hendrerit odio. Curabitur hendrerit ligula arcu, ac venenatis dui placerat in. Nullam vel ultricies tellus. Vivamus arcu nunc, tincidunt vel est quis, interdum ultricies velit. Sed ac diam mi. Sed tellus lacus, pharetra id hendrerit a, tristique eget justo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis ac nulla id tortor consectetur tincidunt. Etiam tristique ornare tincidunt. Maecenas porta massa eleifend bibendum imperdiet. Donec nunc dolor, porttitor porttitor laoreet eu, dignissim nec sapien. Sed tellus velit, eleifend id urna id, suscipit porta nunc. Duis augue ex, mattis id molestie ac, rutrum ac felis. Fusce commodo vel velit nec pulvinar. Vivamus vehicula rutrum laoreet. Praesent tempor facilisis neque, vitae rhoncus libero tempus non. Quisque quis feugiat dolor, ac ultricies ipsum. Aenean commodo ac elit id laoreet. Phasellus et posuere ante. Duis at tellus tristique, lacinia justo vitae, faucibus est. Nunc efficitur lorem id mi dapibus, id dignissim nibh lobortis. Nullam ac enim mauris. Donec sed ex mi. Donec auctor sem eget nulla gravida viverra. Donec bibendum, quam ut auctor sollicitudin, dui nulla scelerisque nulla, at feugiat ante sem id ex. Etiam efficitur nisl vel dolor tincidunt, vitae hendrerit dui efficitur. Aenean sagittis, leo sed pulvinar imperdiet, magna dolor pharetra mi, ut posuere purus est vitae purus. Cras auctor tortor mi, quis volutpat justo porttitor vehicula.Maecenas eu vehicula erat. Donec dui augue, porta sit amet sollicitudin id, varius id sapien. Fusce eu magna mauris. Pellentesque malesuada iaculis risus sed pharetra. Nullam quis elementum dolor. Nam sagittis nunc eu purus ultrices, nec tempor tellus mattis. Donec tristique porta commodo. Vestibulum quis nisl laoreet, aliquam odio at, eleifend sem. Sed sed neque vulputate, consectetur velit vel, sollicitudin tellus. In hac habitasse platea dictumst. Ut ornare maximus enim vel blandit. Cras ac aliquam nulla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper, turpis et malesuada pulvinar, purus enim vulputate neque, eu posuere dui elit eu odio. Maecenas fermentum, risus et lobortis convallis, risus tortor sodales purus, ut dignissim lacus felis quis urna. Quisque sit amet mi sed est ornare bibendum vitae vitae ex. In tempor, felis in iaculis egestas, ex risus congue elit, at ullamcorper metus felis in mauris. Aliquam venenatis molestie mauris, in ultricies tortor. Phasellus consectetur tincidunt molestie. Aliquam quis blandit orci. Quisque nec nunc id dolor tincidunt tristique. Vestibulum odio diam, consectetur sit amet porttitor in, sodales nec tellus. Sed semper elit sit amet elit volutpat molestie. Quisque vitae pharetra ante. Mauris convallis tellus velit, volutpat facilisis felis volutpat a. Quisque tincidunt tellus elit, ac tincidunt est lacinia non. Integer blandit quam sed luctus pellentesque. Aenean quis auctor sem, non faucibus enim.Morbi condimentum, sem suscipit rhoncus tempor, tortor dolor bibendum mi, sit amet tempor nisi diam at purus. Nulla sagittis tincidunt enim, et ornare nibh euismod vel. Sed libero magna, dignissim ac lectus at, dignissim pellentesque est. Vivamus lobortis dictum risus vel laoreet. Etiam sit amet pretium felis. Cras convallis, eros iaculis sagittis semper, lectus orci auctor quam, ut vulputate dui mauris in nisl. Curabitur id consequat risus, eu lobortis erat. Sed imperdiet lectus eget pharetra dapibus. Sed lacinia sagittis nunc sit amet imperdiet. ",
+        "output": {
+          "line": [],
+          "word": []
+        }
+      },
+      {
+        "input": "The Truce of Calais was agreed by King Edward III of England and King Philip VI of France (depicted) on 28 September 1347. After ten years of war both countries were financially and militarily exhausted and Pope Clement VI brokered a truce, to run until 7 July 1348. The Black Death caused the truce to be renewed in 1348, 1349 and 1350. The truce effectively restricted fighting, but did not stop repeated naval clashes nor much fighting on a smaller scale. In 1351 the truce was renewed for one year but in January 1352 full-scale fighting broke out again. On 6 April 1354 a new truce and an outline of a permanent peace treaty were agreed as the Treaty of Guînes. However, King John II of France then decided on an ambitious series of offensives for the 1355 campaigning season and repudiated the treaty. Yet another extension to the Truce of Calais was agreed, until 24 June, when it finally expired. The war resumed in force in October 1355. (This article is part of a featured topic: Hundred Years' War, 1345–1347.)",
+        "output": {
+          "line": [],
+          "word": []
+        }
+      },
+      {
+        "input": "At the time of the union of East Jersey and West Jersey into the Province of New Jersey in 1702, there were about 24 townships; more were added under British government by letters patent, court decrees, or legislative action. Following the American Revolutionary War, the New Jersey Legislature confirmed all municipal charters, and granted new ones; by 1798, the state had 104 townships. Increased economic activity in Essex, Morris and Sussex counties, and the formation of Warren County, raised the number to 125 by 1834. Most of the townships had low taxes and little government; the roads (mostly of dirt) were maintained by farmers in lieu of taxes. Township meetings occurred each February; the citizens would discuss concerns, voluntarily seek solutions, and collectively appoint agents to carry out their will. Voters in each township elected members of the county governing body, the Board of Chosen Freeholders. The railroad brought major changes to New Jersey beginning in the mid-19th century. The state was mostly agricultural, and the new lines made it easier for farmers to get their crops to market. But they also made it easier for those employed in New York City or Philadelphia to live outside the urban core and yet commute to work each day. Even before the Civil War, the Brick Church station, in Orange, Essex County, about 15 miles (24 km) from New York City, became the center of the nation's first commuter suburb. New Jersey's townships acquired a new type of population, consisting of commuters, who formed communities near railroad stations, and who wanted good streets and roads, better funded schools, and a larger stake in the government. They were fiercely opposed on each issue by the existing rural, agricultural population, who understood that their taxes would need to be raised in order to pay for the services that they did not want. Schools and school districts caused angry debate between commuters and long-time residents. School district lines were independent of those of townships, for every school formed its own school district. Accordingly, townships could contain a number of school districts: Bergen County's Franklin Township in the early 1890s contained eleven school districts serving 774 students. Of the 94 schools in Bergen County in 1893, thirty-one were one-room schoolhouses, though this was a decrease from 44 in 1880. Bergen County was sparsely populated when the railroad lines went through in the 1850s, making for a different pattern of development than other suburban counties, such as Union and Camden, which saw more planned development around railroad stations. Bergen's pattern of development was unique in New Jersey, with, until 1894, several commuter suburbs in a single township, something rare elsewhere in the state. The town-meeting style of government then prescribed for townships proved ill-suited to those changing times. The New Jersey Constitution gave the state government in Trenton relatively weak powers over the townships, but from time to time the legislature attempted reform. The townships were divided into road districts, with residents appointed to see that maintenance was done; in 1859, the state allowed residents of each district to elect a road commissioner, who saw to it their road taxes were spent effectively.",
+        "output": {
+          "line": [],
+          "word": []
+        }
+      }
+    ]
+  },
+  {
+    "langid": "cn",
+    "ja_zh": true,
+    "modes": [
+      "auto",
+      "dictionary"
+    ],
+    "values": [
+      {
+        "input": "你好世界",
+        "output": {
+          "line": [0, 3, 6, 9, 12],
+          "word": [0, 6, 12],
+          "icu4c": {
+            "line": [1, 2, 3, 4],
+            "word": [2, 4]
+          }
+        }
+      },
+      {
+        "input": "喜馬拉雅小熊貓（学名：Ailurus fulgens），又叫西方小熊猫，是一种小型小貓熊科哺乳动物，主要分布於喜马拉雅山脉东部（尼泊尔，不丹，印度北部，缅甸北部，中国西藏和云南西部。发现及分类 1821年11月，英国驻印军的一位少将托马斯·哈德威克（T. Hardwick）在驻地发现小熊猫，并根据在附近的观察，把小熊猫作为哺乳动物的一个新属。根据小熊猫的叫声，他把小熊猫称为Wah，还准备将其作为学名。作为第一个发现小熊猫的人，哈德威克在伦敦林奈学会宣读了自己的发现，但是他的的论文直到1827年才在《林奈协会学报》上发表，此时小熊猫已被法国动物学者弗列德利克·居维叶命名。1824年，弗列德利克·居维叶看到来自喜马拉雅山南坡的小熊猫标本后相当激动，根据它火红光亮的毛皮把它叫作“火红猫”，因此以希腊文中“火焰色的猫”（Ailurus fulgens）作为其学名。2002年的研究认为小熊猫种内已产生遗传分化（在分类学中，把有亚种分化的种称为多型种，没有分化的叫单型种。凡是多型种首次定立种名时所依据的地方性种群，即称指名亚种，其他亚种一般冠上地区称谓），并形成独立的指名亚种与小熊猫川西亚种[6]。2020年的研究结果认为两类种群约于22万年前即分家，其后鲜有遗传上的交流，故建议将小熊猫指名亚种提升为种阶并命名为喜马拉雅小熊猫。[2]。另一方面,分子系统学分析认为,亚种之间没有遗传差异。[原創研究？] ",
+        "output": {
+          "line": [0, 3, 6, 9, 12, 15, 18, 21, 27, 33, 41, 54, 57, 60, 63, 66, 69, 72, 78, 81, 84, 87, 90, 93, 96, 99, 102, 105, 108, 111, 114, 120, 123, 126, 129, 132, 135, 138, 141, 144, 147, 150, 153, 156, 159, 165, 168, 174, 177, 183, 186, 189, 192, 198, 201, 204, 207, 213, 216, 219, 222, 225, 228, 231, 234, 237, 243, 246, 249, 252, 255, 259, 263, 266, 268, 274, 277, 280, 283, 286, 289, 292, 295, 298, 301, 304, 307, 310, 313, 315, 318, 321, 324, 327, 333, 344, 347, 350, 353, 356, 359, 362, 365, 371, 374, 377, 380, 383, 386, 389, 392, 395, 401, 404, 407, 410, 413, 416, 419, 422, 425, 428, 431, 434, 437, 440, 443, 449, 452, 455, 458, 461, 464, 467, 470, 476, 479, 482, 485, 488, 491, 494, 497, 503, 506, 509, 512, 515, 518, 521, 524, 527, 533, 536, 539, 542, 545, 548, 551, 554, 557, 560, 563, 566, 572, 575, 578, 581, 584, 587, 590, 593, 596, 599, 602, 605, 608, 611, 614, 617, 620, 623, 626, 632, 635, 638, 641, 644, 647, 650, 653, 656, 659, 663, 666, 669, 672, 678, 681, 684, 687, 690, 696, 699, 702, 708, 711, 714, 717, 720, 723, 726, 729, 732, 735, 738, 741, 744, 747, 750, 753, 756, 759, 762, 764, 767, 770, 773, 776, 782, 786, 792, 795, 798, 801, 804, 807, 809, 812, 815, 818, 821, 824, 827, 830, 833, 836, 839, 842, 845, 848, 851, 854, 857, 860, 863, 866, 869, 872, 875, 878, 881, 887, 890, 893, 896, 899, 902, 905, 908, 911, 914, 917, 920, 923, 926, 935, 938, 947, 950, 953, 956, 959, 962, 965, 974, 977, 980, 983, 1000, 1010, 1013, 1016, 1019, 1022, 1028, 1032, 1035, 1038, 1041, 1044, 1047, 1050, 1053, 1056, 1059, 1062, 1065, 1068, 1071, 1074, 1077, 1080, 1083, 1086, 1092, 1095, 1098, 1101, 1107, 1110, 1113, 1116, 1119, 1122, 1125, 1128, 1131, 1134, 1137, 1140, 1143, 1149, 1152, 1155, 1158, 1161, 1164, 1167, 1170, 1173, 1179, 1182, 1185, 1188, 1191, 1194, 1197, 1200, 1203, 1206, 1209, 1212, 1215, 1218, 1221, 1224, 1227, 1230, 1233, 1236, 1239, 1245, 1248, 1251, 1254, 1257, 1260, 1266, 1269, 1272, 1275, 1278, 1281, 1284, 1287, 1290, 1293, 1296, 1299, 1308, 1311, 1314, 1317, 1320, 1323, 1326, 1329, 1332, 1335, 1338, 1341, 1344, 1347, 1350, 1353, 1356, 1359, 1362, 1368, 1372, 1375, 1378, 1381, 1384, 1387, 1390, 1393, 1396, 1399, 1402, 1405, 1408, 1411, 1414, 1416, 1419, 1422, 1425, 1428, 1431, 1437, 1440, 1443, 1446, 1449, 1452, 1455, 1458, 1461, 1464, 1470, 1473, 1476, 1479, 1482, 1485, 1488, 1491, 1494, 1497, 1500, 1503, 1506, 1509, 1512, 1515, 1518, 1521, 1524, 1527, 1530, 1533, 1536, 1539, 1542, 1545, 1548, 1554, 1560, 1563, 1566, 1569, 1573, 1576, 1579, 1582, 1585, 1588, 1591, 1594, 1597, 1601, 1604, 1607, 1610, 1613, 1616, 1619, 1622, 1625, 1628, 1634, 1638, 1641, 1644, 1652],
+          "word": [0, 12, 18, 21, 24, 30, 33, 40, 41, 48, 51, 54, 57, 60, 66, 72, 75, 78, 81, 87, 93, 99, 102, 105, 111, 117, 120, 126, 132, 135, 147, 153, 159, 162, 171, 174, 180, 183, 189, 195, 198, 204, 210, 213, 219, 225, 228, 234, 240, 243, 249, 252, 258, 259, 263, 266, 268, 271, 274, 280, 283, 286, 289, 292, 298, 304, 313, 315, 318, 324, 327, 330, 331, 332, 333, 341, 344, 347, 353, 359, 365, 368, 371, 374, 380, 383, 389, 392, 398, 401, 404, 410, 413, 419, 425, 431, 434, 440, 443, 446, 449, 455, 461, 464, 467, 473, 476, 479, 482, 488, 491, 497, 500, 503, 506, 512, 515, 518, 524, 530, 533, 539, 545, 548, 554, 560, 563, 566, 569, 572, 575, 581, 584, 587, 593, 596, 599, 605, 611, 614, 620, 623, 629, 632, 638, 644, 647, 653, 659, 663, 666, 669, 672, 675, 678, 681, 687, 693, 696, 699, 705, 708, 714, 720, 723, 726, 729, 735, 741, 747, 750, 753, 756, 762, 764, 767, 770, 773, 779, 782, 786, 789, 792, 795, 798, 801, 807, 809, 812, 815, 818, 824, 830, 842, 848, 851, 854, 860, 863, 869, 872, 878, 884, 887, 893, 896, 899, 902, 908, 911, 917, 920, 923, 929, 932, 935, 938, 941, 944, 947, 953, 956, 962, 968, 971, 977, 980, 983, 986, 989, 992, 999, 1000, 1007, 1010, 1016, 1019, 1025, 1028, 1032, 1035, 1038, 1044, 1050, 1056, 1059, 1062, 1065, 1068, 1074, 1080, 1086, 1089, 1092, 1098, 1101, 1104, 1107, 1110, 1113, 1116, 1119, 1125, 1128, 1131, 1137, 1140, 1143, 1146, 1149, 1155, 1161, 1164, 1167, 1170, 1173, 1176, 1179, 1185, 1188, 1191, 1194, 1200, 1206, 1209, 1212, 1215, 1218, 1224, 1227, 1233, 1236, 1242, 1245, 1248, 1251, 1257, 1260, 1263, 1266, 1272, 1275, 1278, 1284, 1287, 1293, 1296, 1302, 1305, 1308, 1311, 1317, 1323, 1326, 1332, 1335, 1338, 1341, 1347, 1350, 1356, 1359, 1362, 1363, 1364, 1365, 1368, 1372, 1375, 1378, 1384, 1390, 1396, 1399, 1402, 1408, 1411, 1414, 1416, 1422, 1425, 1428, 1434, 1437, 1443, 1446, 1449, 1455, 1458, 1461, 1467, 1470, 1473, 1479, 1482, 1488, 1491, 1497, 1500, 1503, 1509, 1512, 1515, 1518, 1521, 1527, 1530, 1542, 1548, 1551, 1554, 1555, 1556, 1557, 1560, 1652],
+          "icu4c": {
+            "line": [1, 2, 3, 4, 5, 6, 7, 9, 11, 19, 28, 29, 30, 31, 32, 33, 34, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 65, 66, 68, 69, 71, 72, 73, 74, 76, 77, 78, 79, 81, 82, 83, 84, 85, 86, 87, 88, 89, 91, 92, 93, 94, 95, 97, 101, 102, 104, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 128, 137, 138, 139, 140, 141, 142, 143, 144, 146, 147, 148, 149, 150, 151, 152, 153, 154, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 172, 173, 174, 175, 176, 177, 178, 179, 181, 182, 183, 184, 185, 186, 187, 188, 192, 193, 194, 195, 196, 197, 198, 199, 200, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 248, 249, 250, 251, 253, 254, 255, 256, 257, 259, 260, 261, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 288, 292, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 326, 327, 328, 329, 330, 331, 332, 333, 334, 335, 336, 337, 338, 339, 342, 343, 346, 347, 348, 349, 350, 351, 352, 355, 356, 357, 358, 369, 377, 378, 379, 380, 381, 383, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 407, 408, 409, 410, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 426, 427, 428, 429, 430, 431, 432, 433, 434, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 458, 459, 460, 461, 462, 463, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 501, 505, 506, 507, 508, 509, 510, 511, 512, 513, 514, 515, 516, 517, 518, 519, 521, 522, 523, 524, 525, 526, 528, 529, 530, 531, 532, 533, 534, 535, 536, 537, 539, 540, 541, 542, 543, 544, 545, 546, 547, 548, 549, 550, 551, 552, 553, 554, 555, 556, 557, 558, 559, 560, 561, 562, 563, 564, 565, 567, 571, 572, 573, 574, 576, 577, 578, 579, 580, 581, 582, 583, 584, 586, 587, 588, 589, 590, 591, 592, 593, 594, 595, 597, 599, 600, 601, 605],
+            "word": [4, 5, 7, 8, 10, 11, 18, 19, 26, 27, 28, 29, 30, 32, 33, 35, 36, 37, 39, 41, 42, 44, 45, 47, 49, 50, 52, 54, 55, 59, 61, 63, 64, 67, 68, 70, 71, 73, 75, 76, 78, 80, 81, 83, 85, 86, 88, 90, 91, 93, 94, 96, 97, 101, 102, 104, 105, 106, 108, 109, 110, 111, 112, 114, 116, 119, 120, 121, 123, 124, 125, 126, 127, 128, 136, 137, 138, 140, 142, 143, 145, 146, 147, 149, 150, 152, 153, 155, 156, 157, 158, 160, 162, 164, 166, 167, 169, 170, 171, 172, 174, 175, 177, 178, 180, 181, 182, 183, 184, 186, 188, 191, 192, 193, 195, 196, 197, 199, 201, 202, 204, 205, 207, 209, 210, 212, 213, 214, 215, 216, 218, 219, 220, 222, 223, 224, 226, 228, 229, 231, 232, 234, 235, 237, 239, 240, 242, 244, 248, 249, 250, 251, 252, 253, 254, 256, 258, 259, 260, 262, 263, 265, 266, 268, 269, 270, 272, 274, 276, 277, 278, 279, 281, 282, 283, 284, 285, 287, 288, 292, 293, 294, 295, 296, 297, 299, 300, 301, 302, 303, 305, 307, 311, 313, 314, 315, 316, 318, 320, 321, 323, 325, 326, 328, 329, 330, 331, 333, 334, 336, 337, 338, 340, 341, 342, 343, 344, 345, 346, 348, 349, 351, 353, 354, 356, 357, 358, 359, 360, 361, 368, 369, 376, 377, 379, 380, 382, 383, 387, 388, 389, 391, 393, 394, 396, 397, 398, 399, 401, 403, 405, 406, 407, 409, 410, 411, 412, 413, 414, 415, 416, 418, 419, 420, 422, 423, 424, 425, 426, 428, 430, 431, 432, 433, 434, 435, 436, 438, 439, 440, 441, 443, 445, 446, 447, 448, 449, 451, 452, 454, 455, 457, 458, 459, 460, 462, 463, 464, 465, 467, 468, 469, 471, 472, 473, 475, 477, 478, 479, 480, 482, 484, 485, 487, 488, 489, 490, 491, 493, 494, 496, 497, 498, 499, 500, 501, 505, 506, 507, 509, 511, 513, 514, 515, 517, 518, 519, 521, 522, 524, 525, 526, 527, 528, 530, 531, 532, 534, 535, 536, 538, 539, 540, 542, 543, 544, 546, 548, 549, 550, 552, 553, 554, 555, 556, 558, 559, 563, 564, 566, 567, 568, 569, 570, 571, 575, 576, 578, 580, 581, 583, 585, 586, 587, 588, 590, 592, 594, 596, 597, 598, 600, 602, 603, 604, 605]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "langid": "th",
+    "ja_zh": false,
+    "modes": [
+      "auto",
+      "dictionary",
+      "lstm"
+    ],
+    "values": [
+      {
+        "input": "สวัสดีชาวโลก",
+        "output": {
+          "line": [0, 18, 27, 36],
+          "word": [0, 18, 27, 36],
+          "icu4c": {
+            "line": [6, 9, 12],
+            "word": [6, 9, 12]
+          }
+        }
+      },
+      {
+        "input": "แพนด้าแดง (อังกฤษ: Red panda, Shining cat; จีน: 小熊貓; พินอิน: Xiǎo xióngmāo) สัตว์เลี้ยงลูกด้วยนมชนิดหนึ่ง มีชื่อวิทยาศาสตร์ว่า Ailurus fulgens อยู่ในวงศ์ Ailuridae จัดเป็นสิ่งมีชีวิตเพียงชนิดเดียวที่อยู่ในวงศ์นี้ที่ยังสืบทอดสายพันธุ์อยู่ จึงจัดเป็นซากดึกดำบรรพ์มีชีวิตอยู่ชนิดหนึ่ง และเป็นเพียงชนิดเดียวที่อยู่ในสกุล Ailurus มีรูปร่างหน้าตาคล้ายแรคคูนและกระรอกรวมกัน หัวมีขนาดใหญ่ จมูกแหลม ขาสั้นคล้ายหมี ขนตามลำตัวมีหลากหลาย มีทั้งสีน้ำตาลเข้ม น้ำตาลเหลืองและน้ำตาลแดง ขนบริเวณลำคอยาวและนุ่มฟู หางเป็นพวงยาวคล้ายกับหางของกระรอก มีลายปล้องสีน้ำตาลแดงสลับขาว มีความยาวของลำตัวและหัว 51-64 เซนติเมตร หางยาว 50-63 เซนติเมตร มีน้ำหนัก 3-4.5 กิโลกรัม มีการกระจายพันธุ์พบตามแนวเทือกเขาหิมาลัย ตั้งแต่ภาคเหนือของประเทศอินเดีย, ทิเบต, เนปาล, ภูฏาน, จีน, ภาคเหนือของพม่า และภาคเหนือของประเทศลาวบริเวณที่ติดกับจีน โดยอาศัยอยู่ในป่าที่มีระดับความสูงตั้งแต่ 1,500-4,000 เมตรจากระดับน้ำทะเล ",
+        "output": {
+          "line": [0, 18, 27, 28, 49, 53, 60, 68, 73, 2337],
+          "word": [0, 18, 27, 28, 29, 49, 52, 53, 58, 59, 60, 67, 68, 71, 72, 73, 2337],
+          "icu4c": {
+            "line": [6, 10, 19, 23, 30, 38, 43, 48, 49, 50, 53, 55, 61, 66, 76, 81, 87, 90, 94, 96, 100, 106, 112, 123, 127, 135, 143, 147, 149, 154, 164, 167, 171, 175, 177, 182, 187, 191, 196, 199, 203, 205, 209, 212, 215, 218, 224, 227, 233, 238, 241, 244, 248, 261, 263, 268, 272, 276, 282, 285, 289, 294, 298, 303, 306, 310, 312, 317, 325, 327, 330, 334, 340, 345, 351, 354, 360, 363, 367, 370, 372, 376, 381, 385, 390, 392, 396, 401, 405, 407, 410, 412, 415, 417, 421, 426, 428, 432, 434, 440, 445, 451, 457, 460, 466, 470, 472, 478, 480, 482, 485, 488, 492, 495, 498, 502, 505, 508, 513, 516, 519, 522, 529, 531, 534, 539, 541, 547, 550, 554, 558, 560, 564, 567, 570, 572, 575, 578, 582, 588, 598, 605, 611, 621, 623, 626, 631, 637, 646, 648, 652, 654, 657, 663, 665, 668, 671, 676, 679, 687, 694, 697, 702, 705, 711, 720, 727, 734, 741, 746, 749, 754, 757, 762, 765, 768, 773, 776, 782, 785, 791, 794, 797, 800, 804, 807, 812, 816, 818, 821, 824, 826, 831, 835, 838, 846, 858, 862, 865, 870, 873, 878],
+            "word": [6, 9, 10, 11, 17, 18, 19, 22, 23, 28, 29, 30, 37, 38, 41, 42, 43, 46, 47, 48, 49, 51, 52, 53, 55, 59, 60, 61, 65, 66, 74, 75, 76, 81, 87, 90, 94, 96, 100, 105, 106, 112, 123, 126, 127, 134, 135, 142, 143, 147, 149, 153, 154, 163, 164, 167, 171, 175, 177, 182, 187, 191, 196, 199, 203, 205, 209, 212, 215, 218, 224, 227, 233, 237, 238, 241, 244, 248, 261, 263, 268, 272, 276, 281, 282, 285, 289, 294, 298, 303, 306, 310, 312, 316, 317, 324, 325, 327, 330, 334, 340, 345, 351, 354, 360, 363, 366, 367, 370, 372, 376, 380, 381, 385, 389, 390, 392, 396, 401, 404, 405, 407, 410, 412, 415, 417, 421, 425, 426, 428, 432, 434, 440, 444, 445, 451, 457, 460, 466, 469, 470, 472, 478, 480, 482, 485, 488, 492, 494, 495, 498, 502, 505, 508, 513, 516, 519, 522, 528, 529, 531, 534, 539, 541, 547, 550, 554, 557, 558, 560, 564, 567, 570, 572, 575, 578, 581, 582, 584, 585, 587, 588, 597, 598, 604, 605, 607, 608, 610, 611, 620, 621, 623, 626, 630, 631, 632, 633, 636, 637, 645, 646, 648, 652, 654, 657, 663, 665, 668, 671, 676, 679, 686, 687, 694, 697, 702, 705, 711, 718, 719, 720, 725, 726, 727, 732, 733, 734, 739, 740, 741, 744, 745, 746, 749, 754, 757, 761, 762, 765, 768, 773, 776, 782, 785, 791, 794, 797, 800, 803, 804, 807, 812, 816, 818, 821, 824, 826, 831, 835, 838, 845, 846, 851, 852, 857, 858, 862, 865, 870, 873, 877, 878]
+          }
+        }
+      }
+    ]
+  }
 ]

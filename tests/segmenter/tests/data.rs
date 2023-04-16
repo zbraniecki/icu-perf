@@ -13,19 +13,29 @@ fn test_data_icu4x() {
     let provider = icu4x::WordSegmenter::get_static_provider();
 
     for case in tests.0.iter() {
-        for value in case.values.iter() {
-            let seg = icu4x::LineSegmenter::new_static(&provider);
-            let iterator = seg.segment(value.input);
-            let result: Vec<_> = iterator.collect();
-            if !value.output.line.is_empty() {
-                assert_eq!(result, value.output.line.to_vec());
-            }
+        for mode in &case.modes {
+            for value in case.values.iter() {
+                let seg = match mode {
+                    data::Mode::Auto => icu4x::LineSegmenter::new_auto_static(&provider, case.ja_zh),
+                    data::Mode::Dictionary => icu4x::LineSegmenter::new_dictionary_static(&provider, case.ja_zh),
+                    data::Mode::Lstm => icu4x::LineSegmenter::new_lstm_static(&provider, case.ja_zh),
+                };
+                let iterator = seg.segment(value.input);
+                let result: Vec<_> = iterator.collect();
+                if !value.output.line.is_empty() {
+                    assert_eq!(result, value.output.line.to_vec(), "line, langid: {}, mode: {}", case.langid, mode);
+                }
 
-            let seg = icu4x::WordSegmenter::new_static(&provider);
-            let iterator = seg.segment(value.input);
-            let result: Vec<_> = iterator.collect();
-            if !value.output.word.is_empty() {
-                assert_eq!(result, value.output.word.to_vec());
+                let seg = match mode {
+                    data::Mode::Auto => icu4x::WordSegmenter::new_auto_static(&provider),
+                    data::Mode::Dictionary => icu4x::WordSegmenter::new_dictionary_static(&provider),
+                    data::Mode::Lstm => icu4x::WordSegmenter::new_lstm_static(&provider),
+                };
+                let iterator = seg.segment(value.input);
+                let result: Vec<_> = iterator.collect();
+                if !value.output.word.is_empty() {
+                    assert_eq!(result, value.output.word.to_vec(), "word, langid: {}, mode: {}", case.langid, mode);
+                }
             }
         }
     }
@@ -42,17 +52,17 @@ fn test_data_icu4c() {
             let seg = icu4c::Segmenter::new(case.langid, value.input, false);
             let result: Vec<_> = seg.map(|i| i as usize).collect();
             if let Some(o) = &value.output.icu4c {
-                assert_eq!(result, o.line.to_vec());
+                assert_eq!(result, o.line.to_vec(), "{}", case.langid);
             } else if !value.output.line.is_empty() {
-                assert_eq!(result, value.output.line.to_vec());
+                assert_eq!(result, value.output.line.to_vec(), "{}", case.langid);
             }
 
             let seg = icu4c::Segmenter::new(case.langid, value.input, true);
             let result: Vec<_> = seg.map(|i| i as usize).collect();
             if let Some(o) = &value.output.icu4c {
-                assert_eq!(result, o.word.to_vec());
+                assert_eq!(result, o.word.to_vec(), "{}", case.langid);
             } else if !value.output.word.is_empty() {
-                assert_eq!(result, value.output.word.to_vec());
+                assert_eq!(result, value.output.word.to_vec(), "{}", case.langid);
             }
         }
     }
