@@ -4,7 +4,7 @@ fn main() {
     let langid = "en";
     let date = 27832853;
 
-    let dtf = icu4c::DateTimeFormatter::new(langid, "Medium", "Medium");
+    let dtf = icu4c::DateTimeFormatter::new(langid, "Medium", "None");
     let result = dtf.format(date);
     println!("{}", result);
 }

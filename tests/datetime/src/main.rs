@@ -30,8 +30,7 @@ fn main() {
 
         #[cfg(feature = "icu4x-baked")]
         {
-            let provider = icu4x::DateTimeFormatter::get_baked_provider();
-            let dtf = icu4x::DateTimeFormatter::new_baked(&provider, &en, "Medium", "Medium");
+            let dtf = icu4x::DateTimeFormatter::new_baked(&en, "Medium", "Medium");
             let result = dtf.format(epoch);
             println!("ICU4X (baked): {}", result);
         }
