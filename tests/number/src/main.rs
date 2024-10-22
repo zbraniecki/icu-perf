@@ -19,7 +19,7 @@ fn main() {
 
     #[cfg(feature = "icu4x")]
     {
-        use icu_locid::LanguageIdentifier;
+        use icu_locale::LanguageIdentifier;
 
         let en: LanguageIdentifier = langid.parse().unwrap();
         #[cfg(feature = "icu4x-static")]
@@ -38,8 +38,7 @@ fn main() {
             let mut options: FixedDecimalFormatterOptions = Default::default();
             options.grouping_strategy = GroupingStrategy::Auto;
 
-            let provider = icu4x::NumberFormatter::get_baked_provider();
-            let nf = icu4x::NumberFormatter::new_baked(&provider, &en, options);
+            let nf = icu4x::NumberFormatter::new_baked(&en, options);
             let result = nf.format(value);
             println!("ICU4X (static): {}", result);
         }
