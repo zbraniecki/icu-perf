@@ -28,6 +28,8 @@ icu4x = ["icu_decimal", "fixed_decimal", "icu_locale", "writeable"]
 icu4x-static = ["icu4x", "icu_provider_blob"]
 icu4x-baked = ["icu4x", "icu_provider_adapters", "litemap", "zerovec", "icu", "icu_provider"]
 icu4c = ["libc"]
+icu4c-unum = ["libc", "icu4c"]
+icu4c-simple = ["libc", "icu4c"]
 
 [[bench]]
 name = "number"

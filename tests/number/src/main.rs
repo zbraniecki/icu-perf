@@ -10,10 +10,17 @@ fn main() {
     let value = 27832853.0;
     let langid = "en";
 
-    #[cfg(feature = "icu4c")]
+    #[cfg(feature = "icu4c-unum")]
     {
         let nf = icu4c::NumberFormatter::new(langid);
         let result = nf.format(value);
+        println!("ICU4C: {}", result);
+    }
+
+    #[cfg(feature = "icu4c-simple")]
+    {
+        let nf = icu4c::SimpleNumberFormatter::new(langid);
+        let result = nf.format_i64(value as i64);
         println!("ICU4C: {}", result);
     }
 
