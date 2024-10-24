@@ -1,15 +1,3 @@
-#[cfg(feature = "icu4x-baked")]
-pub mod data {
-    include!(concat!(
-        env!("CARGO_MANIFEST_DIR"),
-        "/../../data/icu4x-1.2.rs/mod.rs"
-    ));
-    include!(concat!(
-        env!("CARGO_MANIFEST_DIR"),
-        "/../../data/icu4x-1.2.rs/any.rs"
-    ));
-}
-
 use icu_calendar::DateTime;
 use icu_datetime::options::length;
 use icu_locid::LanguageIdentifier;
@@ -20,7 +8,7 @@ use icu_provider_blob::BlobDataProvider;
 #[cfg(feature = "icu4x-static")]
 const ICU4X_DATA: &[u8] = include_bytes!(concat!(
     env!("CARGO_MANIFEST_DIR"),
-    "/../../data/icu4x-1.2.postcard"
+    "/../../data/icu4x-1.5.postcard"
 ));
 
 fn get_date_length(input: &str) -> Option<length::Date> {
@@ -55,11 +43,6 @@ impl DateTimeFormatter {
         BlobDataProvider::try_new_from_static_blob(&ICU4X_DATA).expect("Failed to load data")
     }
 
-    #[cfg(feature = "icu4x-baked")]
-    pub fn get_baked_provider() -> data::BakedDataProvider {
-        data::BakedDataProvider
-    }
-
     #[cfg(feature = "icu4x-static")]
     pub fn new_static(
         provider: &BlobDataProvider,
@@ -81,7 +64,6 @@ impl DateTimeFormatter {
 
     #[cfg(feature = "icu4x-baked")]
     pub fn new_baked(
-        provider: &data::BakedDataProvider,
         langid: &LanguageIdentifier,
         date_length: &str,
         time_length: &str,
@@ -89,8 +71,7 @@ impl DateTimeFormatter {
         let mut options = length::Bag::default();
         options.date = get_date_length(date_length);
         options.time = get_time_length(time_length);
-        let ptr = icu_datetime::DateTimeFormatter::try_new_with_any_provider(
-            provider,
+        let ptr = icu_datetime::DateTimeFormatter::try_new(
             &langid.into(),
             options.into(),
         )

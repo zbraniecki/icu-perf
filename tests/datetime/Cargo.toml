@@ -63,3 +63,11 @@ required-features = ["gen"]
 [[bin]]
 name = "generate-cpp"
 required-features = ["gen"]
+
+# Size optimized builds
+[profile.release-opt-size]
+inherits = "release"
+lto = true
+opt-level = "s"
+panic = "abort"
+codegen-units = 1
