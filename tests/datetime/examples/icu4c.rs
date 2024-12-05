@@ -4,7 +4,10 @@ fn main() {
     let langid = "en";
     let date = 27832853;
 
-    let dtf = icu4c::DateTimeFormatter::new(langid, "Medium", "Medium");
-    let result = dtf.format(date);
-    println!("{}", result);
+    let mut s = "".to_string();
+    for _ in 0..100000 {
+        let dtf = icu4c::DateTimeFormatter::new(langid, "Medium", "None");
+        s = dtf.format(date);
+    }
+    println!("{s}");
 }

@@ -3,7 +3,7 @@ use std::os::raw::c_char;
 
 #[link(name = "icui18n")]
 extern "C" {
-    pub fn udat_open_72(
+    pub fn udat_open_76(
         timeStyle: libc::c_int,
         dateStyle: libc::c_int,
         locale: *const c_char,
@@ -13,8 +13,8 @@ extern "C" {
         patternLength: libc::c_int,
         status: *mut libc::c_int,
     ) -> *mut libc::c_void;
-    pub fn udat_close_72(format: *mut libc::c_void);
-    pub fn udat_format_72(
+    pub fn udat_close_76(format: *mut libc::c_void);
+    pub fn udat_format_76(
         format: *mut libc::c_void,
         dateToFormat: libc::c_double,
         result: *mut u16,
@@ -49,7 +49,7 @@ impl DateTimeFormatter {
 
         let mut status = 0;
         let ptr = unsafe {
-            udat_open_72(
+            udat_open_76(
                 time_style,
                 date_style,
                 locale.as_ptr(),
@@ -69,7 +69,7 @@ impl DateTimeFormatter {
         let date_to_format = input as f64 * 60.0 * 1000.0; // ms global unix epoch
 
         let new_capacity = unsafe {
-            udat_format_72(
+            udat_format_76(
                 self.ptr,
                 date_to_format,
                 storage.as_mut_ptr(),
@@ -85,6 +85,6 @@ impl DateTimeFormatter {
 
 impl Drop for DateTimeFormatter {
     fn drop(&mut self) {
-        unsafe { udat_close_72(self.ptr) }
+        unsafe { udat_close_76(self.ptr) }
     }
 }

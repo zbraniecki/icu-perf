@@ -6,11 +6,11 @@ links = "icui18n"
 
 [dependencies]
 icu_collator = { path = "../../../icu4x/components/collator", features = ["serde"], optional = true }
-icu_locid = { path = "../../../icu4x/components/locid", optional = true }
+icu_locale = { path = "../../../icu4x/components/locale", optional = true }
 icu_provider_blob = { path = "../../../icu4x/provider/blob", optional = true }
 icu_provider = { path = "../../../icu4x/provider/core", optional = true }
 icu_provider_adapters = { path = "../../../icu4x/provider/adapters", optional = true }
-icu = { path = "../../../icu4x/components/icu", optional = true, features = ["experimental"] }
+icu = { path = "../../../icu4x/components/icu", optional = true }
 zerovec = { path = "../../../icu4x/utils/zerovec", optional = true }
 litemap = { path = "../../../icu4x/utils/litemap", optional = true }
 writeable = { path = "../../../icu4x/utils/writeable", optional = true }
@@ -18,12 +18,12 @@ libc = { version = "0.2", optional = true }
 
 [dev-dependencies]
 criterion = "0.3"
-icu_locid = { path = "../../../icu4x/components/locid" }
+icu_locale = { path = "../../../icu4x/components/locale" }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1"
 
 [features]
-icu4x = ["icu_collator", "icu_locid", "writeable"]
+icu4x = ["icu_collator", "icu_locale", "writeable"]
 icu4x-static = ["icu4x", "icu_provider_blob"]
 icu4x-baked = ["icu4x", "icu_provider_adapters", "litemap", "zerovec", "icu", "icu_provider"]
 icu4c = ["libc"]

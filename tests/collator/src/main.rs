@@ -18,7 +18,7 @@ fn main() {
 
     #[cfg(feature = "icu4x")]
     {
-        use icu_locid::LanguageIdentifier;
+        use icu_locale::LanguageIdentifier;
 
         let en: LanguageIdentifier = langid.parse().unwrap();
         #[cfg(feature = "icu4x-static")]
@@ -31,8 +31,7 @@ fn main() {
 
         #[cfg(feature = "icu4x-baked")]
         {
-            let provider = icu4x::Collator::get_baked_provider();
-            let col = icu4x::Collator::new_baked(&provider, &en);
+            let col = icu4x::Collator::new_baked(&en);
             let result = col.compare(left, right);
             println!("ICU4X (static): {:?}", result);
         }

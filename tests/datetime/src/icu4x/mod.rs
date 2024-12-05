@@ -1,18 +1,7 @@
-#[cfg(feature = "icu4x-baked")]
-pub mod data {
-    include!(concat!(
-        env!("CARGO_MANIFEST_DIR"),
-        "/../../data/icu4x-1.2.rs/mod.rs"
-    ));
-    include!(concat!(
-        env!("CARGO_MANIFEST_DIR"),
-        "/../../data/icu4x-1.2.rs/any.rs"
-    ));
-}
-
 use icu_calendar::DateTime;
-use icu_datetime::options::length;
-use icu_locid::LanguageIdentifier;
+use icu_locale::LanguageIdentifier;
+use icu_datetime::neo_skeleton::NeoSkeletonLength;
+use icu_datetime::fieldset;
 
 #[cfg(feature = "icu4x-static")]
 use icu_provider_blob::BlobDataProvider;
@@ -20,33 +9,20 @@ use icu_provider_blob::BlobDataProvider;
 #[cfg(feature = "icu4x-static")]
 const ICU4X_DATA: &[u8] = include_bytes!(concat!(
     env!("CARGO_MANIFEST_DIR"),
-    "/../../data/icu4x-1.2.postcard"
+    "/../../data/icu4x-2.0-alpha.postcard"
 ));
 
-fn get_date_length(input: &str) -> Option<length::Date> {
+fn get_length(input: &str) -> NeoSkeletonLength {
     match input {
-        "None" => None,
-        "Short" => Some(length::Date::Short),
-        "Medium" => Some(length::Date::Medium),
-        "Long" => Some(length::Date::Long),
-        "Full" => Some(length::Date::Full),
-        _ => unreachable!(),
-    }
-}
-
-fn get_time_length(input: &str) -> Option<length::Time> {
-    match input {
-        "None" => None,
-        "Short" => Some(length::Time::Short),
-        "Medium" => Some(length::Time::Medium),
-        "Long" => Some(length::Time::Long),
-        "Full" => Some(length::Time::Full),
-        _ => unreachable!(),
+        "Short" => NeoSkeletonLength::Short,
+        "Medium" => NeoSkeletonLength::Medium,
+        "Long" => NeoSkeletonLength::Long,
+        _ => panic!("Unknown length: {input}"),
     }
 }
 
 pub struct DateTimeFormatter {
-    ptr: icu_datetime::DateTimeFormatter,
+    ptr: icu_datetime::DateTimeFormatter<fieldset::YMD>,
 }
 
 impl DateTimeFormatter {
@@ -55,25 +31,17 @@ impl DateTimeFormatter {
         BlobDataProvider::try_new_from_static_blob(&ICU4X_DATA).expect("Failed to load data")
     }
 
-    #[cfg(feature = "icu4x-baked")]
-    pub fn get_baked_provider() -> data::BakedDataProvider {
-        data::BakedDataProvider
-    }
-
     #[cfg(feature = "icu4x-static")]
     pub fn new_static(
         provider: &BlobDataProvider,
         langid: &LanguageIdentifier,
-        date_length: &str,
-        time_length: &str,
+        length: &str,
     ) -> Self {
-        let mut options = length::Bag::default();
-        options.date = get_date_length(date_length);
-        options.time = get_time_length(time_length);
+        let options = fieldset::YMD::with_length(get_length(length));
         let ptr = icu_datetime::DateTimeFormatter::try_new_with_buffer_provider(
             provider,
             &langid.into(),
-            options.into(),
+            options,
         )
         .unwrap();
         Self { ptr }
@@ -81,26 +49,22 @@ impl DateTimeFormatter {
 
     #[cfg(feature = "icu4x-baked")]
     pub fn new_baked(
-        provider: &data::BakedDataProvider,
         langid: &LanguageIdentifier,
-        date_length: &str,
-        time_length: &str,
+        length: &str,
     ) -> Self {
-        let mut options = length::Bag::default();
-        options.date = get_date_length(date_length);
-        options.time = get_time_length(time_length);
-        let ptr = icu_datetime::DateTimeFormatter::try_new_with_any_provider(
-            provider,
+        let options = fieldset::YMD::with_length(get_length(length));
+        let ptr = icu_datetime::DateTimeFormatter::try_new(
             &langid.into(),
-            options.into(),
+            options,
         )
         .unwrap();
         Self { ptr }
     }
 
     pub fn format(&self, input: i32) -> String {
+        use writeable::TryWriteable;
         let datetime = DateTime::from_minutes_since_local_unix_epoch(input);
         let any_datetime = datetime.to_any();
-        self.ptr.format_to_string(&any_datetime).unwrap()
+        self.ptr.convert_and_format(&any_datetime).try_write_to_string().unwrap().into_owned()
     }
 }

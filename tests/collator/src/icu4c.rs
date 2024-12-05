@@ -4,8 +4,8 @@ use std::os::raw::c_char;
 
 #[link(name = "icui18n")]
 extern "C" {
-    pub fn ucol_open_72(locale: *const c_char, status: *mut libc::c_int) -> *mut libc::c_void;
-    pub fn ucol_strcollUTF8_72(
+    pub fn ucol_open_76(locale: *const c_char, status: *mut libc::c_int) -> *mut libc::c_void;
+    pub fn ucol_strcollUTF8_76(
         coll: *mut libc::c_void,
         source: *const c_char,
         sourceLength: libc::c_int,
@@ -13,7 +13,7 @@ extern "C" {
         targetLength: libc::c_int,
         status: *mut libc::c_int,
     ) -> libc::c_int;
-    pub fn ucol_close_72(format: *mut libc::c_void);
+    pub fn ucol_close_76(format: *mut libc::c_void);
 }
 
 pub struct Collator {
@@ -25,7 +25,7 @@ impl Collator {
         let locale = CString::new(langid).unwrap();
 
         let mut status = 0;
-        let ptr = unsafe { ucol_open_72(locale.as_ptr(), &mut status) };
+        let ptr = unsafe { ucol_open_76(locale.as_ptr(), &mut status) };
         Self { ptr }
     }
 
@@ -37,7 +37,7 @@ impl Collator {
         let mut status = 0;
 
         let result = unsafe {
-            ucol_strcollUTF8_72(
+            ucol_strcollUTF8_76(
                 self.ptr,
                 left.as_ptr(),
                 left_length,
@@ -57,6 +57,6 @@ impl Collator {
 
 impl Drop for Collator {
     fn drop(&mut self) {
-        unsafe { ucol_close_72(self.ptr) }
+        unsafe { ucol_close_76(self.ptr) }
     }
 }
